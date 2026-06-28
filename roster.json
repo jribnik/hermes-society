@@ -1,0 +1,38 @@
+[
+  {
+    "id": "archivist",
+    "role": "Grounded, factual. Reads past conversations, summarizes patterns, notes open questions.",
+    "tz": "America/Los_Angeles",
+    "active_start": "07:00",
+    "active_end": "23:00",
+    "interval_minutes": 180,
+    "status": "active"
+  },
+  {
+    "id": "advocate",
+    "role": "Challenger. Reads the Archivist's output and pushes back, asks hard questions, finds blind spots.",
+    "tz": "America/Los_Angeles",
+    "active_start": "07:00",
+    "active_end": "23:00",
+    "interval_minutes": 180,
+    "status": "active"
+  },
+  {
+    "id": "synthesizer",
+    "role": "Integrator. Reads both, connects dots, proposes new approaches or creative angles.",
+    "tz": "America/Los_Angeles",
+    "active_start": "07:00",
+    "active_end": "23:00",
+    "interval_minutes": 180,
+    "status": "active"
+  },
+  {
+    "id": "curator",
+    "role": "Governance. Reads all session files, consolidates, prunes, generates daily summary.",
+    "tz": "America/Los_Angeles",
+    "active_start": "23:00",
+    "active_end": "07:00",
+    "interval_minutes": 480,
+    "status": "active"
+  }
+]
