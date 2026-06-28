@@ -5,7 +5,6 @@ Auto-exported from Hermes session database.
 ## By Date
 
 ### 2026-06
-- [2026-06-28_untitled_20260628.md](2026/06/2026-06-28_untitled_20260628.md)
 - [2026-06-28_society-synthesizer___Jun_28_06_45_cron_e32.md](2026/06/2026-06-28_society-synthesizer___Jun_28_06_45_cron_e32.md)
 - [2026-06-28_society-synthesizer___Jun_28_03_52_cron_e32.md](2026/06/2026-06-28_society-synthesizer___Jun_28_03_52_cron_e32.md)
 - [2026-06-28_society-synthesizer___Jun_28_00_43_cron_e32.md](2026/06/2026-06-28_society-synthesizer___Jun_28_00_43_cron_e32.md)
@@ -22,6 +21,7 @@ Auto-exported from Hermes session database.
 - [2026-06-28_society-advocate___Jun_28_00_22_cron_7ce.md](2026/06/2026-06-28_society-advocate___Jun_28_00_22_cron_7ce.md)
 - [2026-06-28_society-advocate___Jun_27_21_23_cron_7ce.md](2026/06/2026-06-28_society-advocate___Jun_27_21_23_cron_7ce.md)
 - [2026-06-28_society-advocate___Jun_27_18_23_cron_7ce.md](2026/06/2026-06-28_society-advocate___Jun_27_18_23_cron_7ce.md)
+- [2026-06-28_Session_export_pipeline_setup_20260628.md](2026/06/2026-06-28_Session_export_pipeline_setup_20260628.md)
 - [2026-06-28_Hermes_Society_Status_Update_20260628.md](2026/06/2026-06-28_Hermes_Society_Status_Update_20260628.md)
 - [2026-06-27_society-synthesizer___Jun_27_15_42_cron_e32.md](2026/06/2026-06-27_society-synthesizer___Jun_27_15_42_cron_e32.md)
 - [2026-06-27_society-synthesizer___Jun_27_12_42_cron_e32.md](2026/06/2026-06-27_society-synthesizer___Jun_27_12_42_cron_e32.md)
@@ -65,4 +65,4 @@ Auto-exported from Hermes session database.
 **unknown** — 1 sessions in last export window
 
 ---
-*Last updated: 2026-06-28 15:44 UTC*
+*Last updated: 2026-06-28 15:48 UTC*
