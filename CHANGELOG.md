@@ -8,19 +8,17 @@ starting at v0.1.0.
 
 ## [Unreleased]
 
-### Session export (2026-06-28)
-- **51 transcripts** committed (cron=34, slack=13, tui=3, unknown=1)
-- Sources: 3 Slack, 34 cron sessions in this batch
+## [0.1.0] — 2026-06-28
 
 ### Added
+
+#### Session Export
 - Daily session transcript export — full Slack and cron conversation history
   committed to `sessions/transcripts/` every 05:00 PT, with credential
   sanitization and auto-generated index
 - `society-export-sessions` cron job (no_agent, daily)
-
-## [0.1.0] — 2026-06-28
-
-### Added
+- Changelog (CHANGELOG.md) with Keep a Changelog format, auto-updated by
+  nightly session export with deduplicated date entries
 
 #### Foundation
 - Four agent instances with distinct prompts and responsibilities:
