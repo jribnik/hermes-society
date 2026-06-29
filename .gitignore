@@ -3,6 +3,7 @@
 backup/
 backups/
 curator-summaries/
+scratch/
 __pycache__/
 *.pyc
 *.pyo
