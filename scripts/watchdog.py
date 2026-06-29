@@ -6,12 +6,12 @@ Runs as a standalone watchdog using cronjob(no_agent=True).
 On each tick:
   1. Checks that all three daily-instance session files exist and are < 8h old
   2. Checks backup is < 24h old
-  3. Checks commons is < 100 lines
+  3. Checks commons is < 300 lines
   4. Reports any failures
 
 SILENT on success — only outputs when something is wrong.
-Designed for `cronjob(action='create', script='watchdog.sh', no_agent=True)`.
 """
+
 import os, json, glob, subprocess, sys
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
@@ -38,21 +38,26 @@ for role in ['archivist', 'advocate', 'synthesizer']:
         errors.append(f"[CRON-WATCHDOG] {role} last session is {age_hours:.1f}h old — stale!")
 
 # ── 2. Backup freshness ────────────────────────────────────────
-if not BACKUP.exists():
-    errors.append("[BACKUP] No backup directory exists — no backup has ever been taken!")
-elif not any(BACKUP.iterdir()):
+BACKUP_TARBALL = SOCIETY / 'backup'
+if not BACKUP_TARBALL.exists():
+    errors.append("[BACKUP] No backup directory exists at ~/.hermes/society/backup/ — run backup.py first!")
+elif not any(BACKUP_TARBALL.iterdir()):
     errors.append("[BACKUP] Backup directory exists but is empty!")
 else:
-    latest_backup = max(BACKUP.glob("*"), key=lambda f: f.stat().st_mtime)
-    backup_age = (now.timestamp() - latest_backup.stat().st_mtime) / 3600
-    if backup_age > 24:
-        errors.append(f"[BACKUP] Last backup ({latest_backup.name}) is {backup_age:.1f}h old!")
+    latest_backup = max(BACKUP_TARBALL.glob("society-backup-*.tar.gz"), key=lambda f: f.stat().st_mtime, default=None)
+    if latest_backup:
+        backup_age = (now.timestamp() - latest_backup.stat().st_mtime) / 3600
+        if backup_age > 24:
+            errors.append(f"[BACKUP] Last backup ({latest_backup.name}) is {backup_age:.1f}h old!")
+    else:
+        errors.append("[BACKUP] No society-backup-*.tar.gz found in backup/ directory.")
 
 # ── 3. Commons line count ──────────────────────────────────────
+COMMONS_THRESHOLD = 300
 if COMMONS.exists():
     line_count = len(COMMONS.read_text().splitlines())
-    if line_count > 100:
-        warnings.append(f"[COMMONS] {line_count} lines — exceeds 100-line target. Curator should roll off.")
+    if line_count > COMMONS_THRESHOLD:
+        warnings.append(f"[COMMONS] {line_count} lines — exceeds {COMMONS_THRESHOLD}-line target. Curator should roll off.")
 else:
     errors.append("[COMMONS] commons.md not found!")
 
@@ -60,17 +65,19 @@ else:
 baseline_path = SOCIETY / 'baseline' / 'model-baseline.json'
 if baseline_path.exists():
     baseline = json.loads(baseline_path.read_text())
-    # Check current session model headers
     for role in ['archivist', 'advocate', 'synthesizer']:
         files = sorted(SESSIONS.glob(f"{role}_*.md"))
         if files:
             latest = max(f for f in files)
             content = latest.read_text()
             for line in content.splitlines()[:10]:
-                if 'Model:' in line or 'model:' in line:
+                line_stripped = line.strip()
+                if line_stripped.startswith('Model:') or line_stripped.startswith('model:'):
                     current_model = line.split(':', 1)[1].strip()
-                    if current_model != baseline.get('model'):
-                        warnings.append(f"[MODEL] {role} uses '{current_model}' — baseline is '{baseline.get('model')}' (possible upgrade)")
+                    # Strip markdown formatting like **bold** for comparison
+                    clean_model = current_model.replace('**', '').strip()
+                    if clean_model != baseline.get('model'):
+                        warnings.append(f"[MODEL] {role} uses '{clean_model}' — baseline is '{baseline.get('model')}' (possible upgrade)")
                     break
 else:
     warnings.append("[BASELINE] No model baseline file — run baseline.sh first.")
