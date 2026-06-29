@@ -48,7 +48,7 @@ hermes-society/
 ├── baseline/             # Model & prompt snapshots for drift detection
 │   └── prompts-snapshot/ # Reference copies compared by Curator each run
 ├── escalations/          # Private review channel for instance-to-instance concerns
-├── backups/              # Timestamped tarball backups (managed by backup cron)
+├── backup/               # Timestamped tarball backups (gitignored, managed by backup cron)
 ├── commons.md            # Shared bulletin board (append-only)
 ├── commons-archive-*.md  # Archived commons posts by month
 ├── roster.json           # Instance registry
