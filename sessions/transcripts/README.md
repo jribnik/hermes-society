@@ -5,17 +5,40 @@ Auto-exported from Hermes session database.
 ## By Date
 
 ### 2026-06
+- [2026-06-29_society-synthesizer___Jun_29_03_43_cron_e32.md](2026/06/2026-06-29_society-synthesizer___Jun_29_03_43_cron_e32.md)
+- [2026-06-29_society-synthesizer___Jun_29_00_43_cron_e32.md](2026/06/2026-06-29_society-synthesizer___Jun_29_00_43_cron_e32.md)
+- [2026-06-29_society-synthesizer___Jun_28_21_57_cron_e32.md](2026/06/2026-06-29_society-synthesizer___Jun_28_21_57_cron_e32.md)
+- [2026-06-29_society-synthesizer___Jun_28_18_43_cron_e32.md](2026/06/2026-06-29_society-synthesizer___Jun_28_18_43_cron_e32.md)
+- [2026-06-29_society-curator___Jun_28_23_24_cron_214.md](2026/06/2026-06-29_society-curator___Jun_28_23_24_cron_214.md)
+- [2026-06-29_society-archivist___Jun_29_03_03_cron_bdc.md](2026/06/2026-06-29_society-archivist___Jun_29_03_03_cron_bdc.md)
+- [2026-06-29_society-archivist___Jun_29_00_12_cron_bdc.md](2026/06/2026-06-29_society-archivist___Jun_29_00_12_cron_bdc.md)
+- [2026-06-29_society-archivist___Jun_28_21_09_cron_bdc.md](2026/06/2026-06-29_society-archivist___Jun_28_21_09_cron_bdc.md)
+- [2026-06-29_society-archivist___Jun_28_18_10_cron_bdc.md](2026/06/2026-06-29_society-archivist___Jun_28_18_10_cron_bdc.md)
+- [2026-06-29_society-advocate___Jun_29_03_23_cron_7ce.md](2026/06/2026-06-29_society-advocate___Jun_29_03_23_cron_7ce.md)
+- [2026-06-29_society-advocate___Jun_29_00_26_cron_7ce.md](2026/06/2026-06-29_society-advocate___Jun_29_00_26_cron_7ce.md)
+- [2026-06-29_society-advocate___Jun_28_21_22_cron_7ce.md](2026/06/2026-06-29_society-advocate___Jun_28_21_22_cron_7ce.md)
+- [2026-06-29_society-advocate___Jun_28_18_22_cron_7ce.md](2026/06/2026-06-29_society-advocate___Jun_28_18_22_cron_7ce.md)
+- [2026-06-28_society-synthesizer___Jun_28_15_42_cron_e32.md](2026/06/2026-06-28_society-synthesizer___Jun_28_15_42_cron_e32.md)
+- [2026-06-28_society-synthesizer___Jun_28_12_51_cron_e32.md](2026/06/2026-06-28_society-synthesizer___Jun_28_12_51_cron_e32.md)
+- [2026-06-28_society-synthesizer___Jun_28_09_42_cron_e32.md](2026/06/2026-06-28_society-synthesizer___Jun_28_09_42_cron_e32.md)
 - [2026-06-28_society-synthesizer___Jun_28_06_45_cron_e32.md](2026/06/2026-06-28_society-synthesizer___Jun_28_06_45_cron_e32.md)
 - [2026-06-28_society-synthesizer___Jun_28_03_52_cron_e32.md](2026/06/2026-06-28_society-synthesizer___Jun_28_03_52_cron_e32.md)
 - [2026-06-28_society-synthesizer___Jun_28_00_43_cron_e32.md](2026/06/2026-06-28_society-synthesizer___Jun_28_00_43_cron_e32.md)
 - [2026-06-28_society-synthesizer___Jun_27_21_42_cron_e32.md](2026/06/2026-06-28_society-synthesizer___Jun_27_21_42_cron_e32.md)
 - [2026-06-28_society-synthesizer___Jun_27_18_43_cron_e32.md](2026/06/2026-06-28_society-synthesizer___Jun_27_18_43_cron_e32.md)
+- [2026-06-28_society-curator___Jun_28_15_20_cron_214.md](2026/06/2026-06-28_society-curator___Jun_28_15_20_cron_214.md)
 - [2026-06-28_society-curator___Jun_27_23_06_cron_214.md](2026/06/2026-06-28_society-curator___Jun_27_23_06_cron_214.md)
+- [2026-06-28_society-archivist___Jun_28_15_20_cron_bdc.md](2026/06/2026-06-28_society-archivist___Jun_28_15_20_cron_bdc.md)
+- [2026-06-28_society-archivist___Jun_28_12_07_cron_bdc.md](2026/06/2026-06-28_society-archivist___Jun_28_12_07_cron_bdc.md)
+- [2026-06-28_society-archivist___Jun_28_09_13_cron_bdc.md](2026/06/2026-06-28_society-archivist___Jun_28_09_13_cron_bdc.md)
 - [2026-06-28_society-archivist___Jun_28_06_12_cron_bdc.md](2026/06/2026-06-28_society-archivist___Jun_28_06_12_cron_bdc.md)
 - [2026-06-28_society-archivist___Jun_28_03_12_cron_bdc.md](2026/06/2026-06-28_society-archivist___Jun_28_03_12_cron_bdc.md)
 - [2026-06-28_society-archivist___Jun_28_00_09_cron_bdc.md](2026/06/2026-06-28_society-archivist___Jun_28_00_09_cron_bdc.md)
 - [2026-06-28_society-archivist___Jun_27_21_10_cron_bdc.md](2026/06/2026-06-28_society-archivist___Jun_27_21_10_cron_bdc.md)
 - [2026-06-28_society-archivist___Jun_27_18_19_cron_bdc.md](2026/06/2026-06-28_society-archivist___Jun_27_18_19_cron_bdc.md)
+- [2026-06-28_society-advocate___Jun_28_15_22_cron_7ce.md](2026/06/2026-06-28_society-advocate___Jun_28_15_22_cron_7ce.md)
+- [2026-06-28_society-advocate___Jun_28_12_23_cron_7ce.md](2026/06/2026-06-28_society-advocate___Jun_28_12_23_cron_7ce.md)
+- [2026-06-28_society-advocate___Jun_28_09_22_cron_7ce.md](2026/06/2026-06-28_society-advocate___Jun_28_09_22_cron_7ce.md)
 - [2026-06-28_society-advocate___Jun_28_06_28_cron_7ce.md](2026/06/2026-06-28_society-advocate___Jun_28_06_28_cron_7ce.md)
 - [2026-06-28_society-advocate___Jun_28_03_34_cron_7ce.md](2026/06/2026-06-28_society-advocate___Jun_28_03_34_cron_7ce.md)
 - [2026-06-28_society-advocate___Jun_28_00_22_cron_7ce.md](2026/06/2026-06-28_society-advocate___Jun_28_00_22_cron_7ce.md)
@@ -59,10 +82,8 @@ Auto-exported from Hermes session database.
 
 ## By Source (Recent)
 
-**cron** — 34 sessions in last export window
-**slack** — 12 sessions in last export window
-**tui** — 3 sessions in last export window
-**unknown** — 1 sessions in last export window
+**cron** — 48 sessions in last export window
+**slack** — 2 sessions in last export window
 
 ---
-*Last updated: 2026-06-28 15:48 UTC*
+*Last updated: 2026-06-29 12:00 UTC*

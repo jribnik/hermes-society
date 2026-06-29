@@ -8,6 +8,10 @@ starting at v0.1.0.
 
 ## [Unreleased]
 
+### Session export (2026-06-29)
+- **74 transcripts** committed (cron=57, slack=13, tui=3, unknown=1)
+- Sources: 3 Slack, 57 cron sessions in this batch
+
 ## [0.1.0] — 2026-06-28
 
 ### Added
