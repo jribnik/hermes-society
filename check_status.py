@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Quick status check for the Hermes Society."""
-import json, os, subprocess
+import json, os, glob, subprocess
 from pathlib import Path
 
 SOCIETY = Path.home() / '.hermes' / 'society'
 ROSTER = SOCIETY / 'roster.json'
 COMMONS = SOCIETY / 'commons.md'
+SESSIONS = SOCIETY / 'sessions'
 
 def fetch_cron_jobs():
     result = subprocess.run(
@@ -16,7 +17,8 @@ def fetch_cron_jobs():
     )
     jobs = {}
     for line in result.stdout.strip().split('\n'):
-        if not line: continue
+        if not line:
+            continue
         parts = line.split('|')
         jobs[parts[0]] = {'schedule': parts[1], 'next': parts[2], 'last': parts[3] if len(parts) > 3 else None}
     return jobs
@@ -44,19 +46,24 @@ for inst in roster:
         print(f"    No cron job found!")
     print()
 
-session_files = sorted((SOCIETY / 'sessions').glob("*.md"))
+# Session files
+session_files = sorted(SESSIONS.glob("*.md"))
 if session_files:
-    print(f"  Session files ({len(session_files)} total):")
-    for f in session_files[-8:]:
+    print("  Session files:")
+    for f in session_files[-8:]:  # last 8
+        mtime = os.path.getmtime(f)
         size = f.stat().st_size
         print(f"    {f.name}  ({size}b)")
+    print(f"    ({len(session_files)} total)")
 else:
     print("  No session files yet.")
 
 print()
 print(f"  Commons: {COMMONS.stat().st_size}b")
+print(f"  Status file: {(SOCIETY / 'status.md').stat().st_size}b")
 print(f"  Prompts: {len(list((SOCIETY / 'prompts').glob('*.md')))}")
 
+# Next events
 print()
 print("  Timeline:")
 for name, j in sorted(jobs.items(), key=lambda x: x[1]['next'] or ''):

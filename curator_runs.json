@@ -1,0 +1,34 @@
+{
+  "runs": [
+    {
+      "run_number": 1,
+      "timestamp": "2026-06-28T06:05Z",
+      "type": "morning_consolidation",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-06-28.md"
+    },
+    {
+      "run_number": 2,
+      "timestamp": "2026-06-28T22:03Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-06-28.md"
+    },
+    {
+      "run_number": 3,
+      "timestamp": "2026-06-29T06:06Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-06-29.md"
+    },
+    {
+      "run_number": 4,
+      "timestamp": "2026-06-29T14:04Z",
+      "type": "morning_consolidation",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-06-29.md"
+    }
+  ],
+  "next_swarm_jury_run": 6,
+  "notes": "Swarm jury executes every 3rd run. Run #3 (nightly deep dive) created Debate 5 (Cascade Legacy). Run #4 (morning consolidation) skipped swarm jury. Run #5 (afternoon pulse) will skip. Run #6 will update again."
+}
