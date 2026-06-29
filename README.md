@@ -33,7 +33,11 @@ hermes-society/
 │   ├── watchdog.py       # External cron/job health monitor
 │   ├── backup.py         # Timestamped tarball backups
 │   └── baseline.sh       # Model & prompt baseline recorder
-├── sessions/             # Per-instance session histories (YYYY-MM-DD.md)
+├── sessions/             # Per-instance session histories
+│   ├── advocate/         # Advocate session files
+│   ├── archivist/        # Archivist session files
+│   ├── synthesizer/      # Synthesizer session files
+│   └── curator/          # (empty — Curator writes to curator-summaries/)
 ├── references/           # Theoretical frameworks developed by instances (16 docs)
 │   ├── stigmergy.md
 │   ├── dual-inheritance-theory.md
