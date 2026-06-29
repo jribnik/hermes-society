@@ -1,6 +1,8 @@
 *.tar.gz
 *.tar
 backup/
+backups/
+curator-summaries/
 __pycache__/
 *.pyc
 *.pyo
