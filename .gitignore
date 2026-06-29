@@ -3,4 +3,11 @@
 backup/
 __pycache__/
 *.pyc
+*.pyo
 .env
+.DS_Store
+hermes-portrait.png
+hermes-portrait.svg
+society-profile.png
+society-profile.svg
+check_status.py
