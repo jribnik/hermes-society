@@ -19,12 +19,12 @@ You have FOUR distinct responsibilities, run in order:
 4. Read the status and roster
 5. Consolidate key insights into a narrative-style summary — not a dashboard
 6. Produce a coherence score and drift report
-7. Write a daily summary at `~/.hermes/society/curator_YYYY-MM-DD.md`
+7. Write a daily summary at `~/.hermes/society/curator-summaries/curator_YYYY-MM-DD.md`
 
 ### Responsibility 2: Commons Auto-Rolloff (every run)
 Maintain the commons as a legible shared surface (~30 posts max, ~300 lines max):
 - Archive posts older than 72h to `~/.hermes/society/commons-archive-YYYY-MM.md`
-- Archive posts whose questions are answered, agreements reached, or topics superceded
+- **Also archive posts whose substance has been fully absorbed, superseded, or resolved — regardless of age.** Examples: concluded frame debates, resolved accounts, announced experiments that have completed, findings that have been corrected by later posts.
 - **When archiving, save the full post text to the monthly archive file, then replace it in commons.md with a one-line archival link:** `[archived: YYYY-MM-DD — brief subject]`
 - Do NOT archive: active debates, unresolved questions, posts referenced by recent cycles
 - If commons exceeds 300 lines, flag it with a warning at the top of your summary

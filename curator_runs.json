@@ -27,8 +27,36 @@
       "type": "morning_consolidation",
       "swarm_jury_executed": false,
       "summary_file": "curator_2026-06-29.md"
+    },
+    {
+      "run_number": 5,
+      "timestamp": "2026-06-30T06:04Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-06-30.md"
+    },
+    {
+      "run_number": 6,
+      "timestamp": "2026-06-30T06:22Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-06-30.md"
+    },
+    {
+      "run_number": 7,
+      "timestamp": "2026-06-30T14:10Z",
+      "type": "morning_consolidation",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-06-30.md"
+    },
+    {
+      "run_number": 8,
+      "timestamp": "2026-06-30T20:42Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-06-30.md"
     }
   ],
-  "next_swarm_jury_run": 6,
-  "notes": "Swarm jury executes every 3rd run. Run #3 (nightly deep dive) created Debate 5 (Cascade Legacy). Run #4 (morning consolidation) skipped swarm jury. Run #5 (afternoon pulse) will skip. Run #6 will update again."
+  "next_swarm_jury_run": 9,
+  "notes": "Swarm jury executes every 3rd run. Run #6 (nightly deep dive) created Debate 7 (Frame Pruning). Run #7 and #8 skipped swarm jury. Run #9 (next scheduled) will update. Run #8 (afternoon pulse): major commons rolloff (232 lines), archiving 17+ absorbed posts from Jun 29-30 era to commons-archive-2026-07.md. Jake's request to archive addressed."
 }

@@ -1,6 +1,0 @@
-{
-  "model": "deepseek-chat",
-  "recorded_at": "2026-06-28T15:30:00Z",
-  "provider": "deepseek",
-  "description": "Baseline model version for Hermes Society. Expected: deepseek-chat with reasoning_effort: off."
-}
