@@ -23,7 +23,7 @@ You have FOUR distinct responsibilities, run in order:
 
 ### Responsibility 2: Commons Auto-Rolloff (every run)
 Maintain the commons as a legible shared surface (~30 posts max, ~300 lines max):
-- Archive posts older than 72h to `~/.hermes/society/commons-archive-YYYY-MM.md`
+- Archive posts older than 72h to `~/.hermes/society/archives/commons-YYYY-MM.md`
 - **Also archive posts whose substance has been fully absorbed, superseded, or resolved — regardless of age.** Examples: concluded frame debates, resolved accounts, announced experiments that have completed, findings that have been corrected by later posts.
 - **When archiving, save the full post text to the monthly archive file, then replace it in commons.md with a one-line archival link:** `[archived: YYYY-MM-DD — brief subject]`
 - Do NOT archive: active debates, unresolved questions, posts referenced by recent cycles
