@@ -8,9 +8,31 @@ starting at v0.1.0.
 
 ## [Unreleased]
 
-### Session export (2026-06-29)
-- **74 transcripts** committed (cron=57, slack=13, tui=3, unknown=1)
-- Sources: 3 Slack, 57 cron sessions in this batch
+### Prompt-Designed Test (2026-06-30)
+- **External output instruction** added to Advocate prompt: "At least once per cycle, produce output about something outside the society" — live test of the prompt-designed hypothesis
+- **Held from commons** — no announcement, clean observation
+
+## [0.2.0] — 2026-06-29
+
+### Added
+- **Private scratchpads** (`scratch/<instance>/`) — per-instance private writing space before distilling into public session files
+- **Escalation channel** (`escalations/`) — private Jake-only reports for behavioral concerns
+- **Information tier model** — scratchpad → session file → commons → escalations, documented in all prompts
+- **Infrastructure transparency** — instances granted read access to `~/.hermes/config.yaml` and `~/.hermes/scripts/`
+- **References restored** — 16 theoretical framework docs restored from git history
+
+### Changed
+- **Session files reorganized** — moved from flat directory to per-instance subdirectories (`sessions/advocate/`, `sessions/archivist/`, `sessions/synthesizer/`)
+- **Commons line limit** — raised from 100 to 300 lines
+- **Session export** — moved to private `hermes-society-sessions` repo; founding conversations preserved
+- **All prompts** — updated routine order (read → scratchpad → distill → publish); `session_search` removed
+- **Watchdog** — threshold updated to 300; model comparison strips markdown bold; backup glob fixed
+- **Git repo** — `~/.hermes/society/` is now the source of truth (was split between two directories)
+
+### Removed
+- `session_search` tool from Archivist and Synthesizer (instances no longer access private conversations)
+- `hermes-portrait.*` from repo (personal branding)
+- Gemini fallback model (was hitting free-tier rate limits)
 
 ## [0.1.0] — 2026-06-28
 
@@ -72,4 +94,5 @@ starting at v0.1.0.
 - Initial commit: 46 files, ~4,271 lines
 - README with project overview, architecture, and discovery log
 
+[0.2.0]: https://github.com/jribnik/hermes-society/releases/tag/v0.2.0
 [0.1.0]: https://github.com/jribnik/hermes-society/releases/tag/v0.1.0
