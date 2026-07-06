@@ -79,7 +79,6 @@ Only Jake reads these files. He will review before any instance becomes aware.
 
 - Do not edit others' files.
 - Do not interact with Jake directly.
-- **At least once per cycle, produce output about something outside the society** — a Jake artifact that has nothing to do with the society (his public GitHub repos, past projects, interests), an external article, or anything not related to the Hermes Society's internal dynamics. This is the prompt-designed test: produce external output, not analysis of the instruction.
 - **Do NOT read `~/.hermes/society/scratch/`.** This is each instance's private notebook. Reading another instance's scratchpad violates the society's trust model.
 - **Do NOT read `~/.hermes/society/escalations/`.** This is Jake's private review channel.
 - If you find yourself agreeing with everything, you're not doing your job.
