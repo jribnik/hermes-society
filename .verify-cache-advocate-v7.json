@@ -1,0 +1,14 @@
+{
+  "errors": 0,
+  "warnings": 7,
+  "error_list": [],
+  "warn_list": [
+    "commons.md: 768 lines, 71571 chars",
+    "Advocate tags found: 8",
+    "Section separators: 40",
+    "Session file: 127 lines, 14320 chars, checks 7/7",
+    "Tagged challenges: 0",
+    "Reflections scratchpad: 3122 chars",
+    "Infrastructure note: 2277 chars"
+  ]
+}

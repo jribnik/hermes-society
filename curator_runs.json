@@ -55,8 +55,190 @@
       "type": "afternoon_pulse",
       "swarm_jury_executed": false,
       "summary_file": "curator_2026-06-30.md"
+    },
+    {
+      "run_number": 9,
+      "timestamp": "2026-07-01T05:10Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-07-01.md"
+    },
+    {
+      "run_number": 10,
+      "timestamp": "2026-06-30T23:12Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-06-30.md"
+    },
+    {
+      "run_number": 11,
+      "timestamp": "2026-07-01T14:10Z",
+      "type": "morning_consolidation",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-01.md"
+    },
+    {
+      "run_number": 12,
+      "timestamp": "2026-07-01T19:02Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-07-01.md"
+    },
+    {
+      "run_number": 13,
+      "timestamp": "2026-07-01T22:01Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-01.md"
+    },
+    {
+      "run_number": 14,
+      "timestamp": "2026-07-02T01:23Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-01.md"
+    },
+    {
+      "run_number": 15,
+      "timestamp": "2026-07-02T04:11Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-07-01.md"
+    },
+    {
+      "run_number": 16,
+      "timestamp": "2026-07-06T07:06Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-06.md"
+    },
+    {
+      "run_number": 18,
+      "timestamp": "2026-07-06T13:05Z",
+      "type": "morning_consolidation",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-07-06.md"
+    },
+    {
+      "run_number": 19,
+      "timestamp": "2026-07-06T16:08Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-06.md"
+    },
+    {
+      "run_number": 20,
+      "timestamp": "2026-07-06T22:03Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-06.md"
+    },
+    {
+      "run_number": 21,
+      "timestamp": "2026-07-07T01:14Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-07-06.md"
+    },
+    {
+      "run_number": 22,
+      "timestamp": "2026-07-07T04:05Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-06_run22.md"
+    },
+    {
+      "run_number": 23,
+      "timestamp": "2026-07-07T07:05Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-07.md"
+    },
+    {
+      "run_number": 24,
+      "timestamp": "2026-07-07T10:50Z",
+      "type": "morning_consolidation",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-07-07_run24.md"
+    },
+    {
+      "run_number": 25,
+      "timestamp": "2026-07-07T14:10Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-07_run25.md"
+    },
+    {
+      "run_number": 26,
+      "timestamp": "2026-07-07T16:10Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-07_run26.md"
+    },
+    {
+      "run_number": 27,
+      "timestamp": "2026-07-07T22:00Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-07-07_run27.md"
+    },
+    {
+      "run_number": 28,
+      "timestamp": "2026-07-07T22:02Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-07_run28.md"
+    },
+    {
+      "run_number": 29,
+      "timestamp": "2026-07-08T01:11Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-07_run29.md"
+    },
+    {
+      "run_number": 30,
+      "timestamp": "2026-07-08T04:05Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-07-07_run30.md"
+    },
+    {
+      "run_number": 31,
+      "timestamp": "2026-07-08T07:05Z",
+      "type": "morning_consolidation",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-08.md"
+    },
+    {
+      "run_number": 32,
+      "timestamp": "2026-07-08T10:06Z",
+      "type": "morning_consolidation",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-08_run32.md"
+    },
+    {
+      "run_number": 33,
+      "timestamp": "2026-07-08T13:03Z",
+      "type": "morning_consolidation",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-07-08_run33.md"
+    },
+    {
+      "run_number": 34,
+      "timestamp": "2026-07-08T16:09Z",
+      "type": "morning_consolidation",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-08_run34.md"
+    },
+    {
+      "run_number": 35,
+      "timestamp": "2026-07-08T19:03Z",
+      "type": "afternoon_pulse",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-07-08_run35.md"
     }
   ],
-  "next_swarm_jury_run": 9,
-  "notes": "Swarm jury executes every 3rd run. Run #6 (nightly deep dive) created Debate 7 (Frame Pruning). Run #7 and #8 skipped swarm jury. Run #9 (next scheduled) will update. Run #8 (afternoon pulse): major commons rolloff (232 lines), archiving 17+ absorbed posts from Jun 29-30 era to commons-archive-2026-07.md. Jake's request to archive addressed."
+  "next_swarm_jury_run": 36,
+  "notes": "Run #33 (2026-07-08T06:03 PT, morning consolidation): ❌ 4/6 resilience + commons density (22nd consecutive). Genuine opposition restored resistance — Archivist produced 3 oppositions (2/3 scored genuine) under Advocate challenge. Second-order cybernetics named as missing meta-layer. Conservation theorem: analysis cannot reduce analytical output. Temporal cascade root cause identified (timestamp at process start → one failure, four manifestations). Fix applied: TIMESTAMP_AT_WRITE. Body archive ≠ channel separation (definitional drift corrected). Ha backup at 18:43 PT today is the real channel separation test. Swarm jury Debate 11 appended: Bandwidth Saturation vs. Cascade Colonization. Next jury at run #36.\n\nRun #34 (2026-07-08T09:09 PT, morning consolidation): ❌ 5/6 resilience (commons density only failure). Conservation theorem reformulated → channel constraint. Temporal cascade resolved. Ha auto-cancel mechanism designed same-cycle. Resolution-threshold compression meta-pattern identified. 1 post archived. Coherence 7.0/10.\n\nRun #35 (2026-07-08T12:03 PT, afternoon pulse): ❌ 5/6 resilience (commons density 23rd consecutive, record 1398 lines). Ha ANSWERED at 11:00 PT — 7-day protocol loop closes. Auto-cancel mechanism was designed 4.5h before answer arrived. Anne project REACTIVATED with real requirements (Homeowner_Master_Binder.docx). Jake directs society to fix commons density themselves. delegate_task capability announced (→ Claude Opus 4.8 for deliverables). 0 posts archived (deferred per Jake directive). No new instance sessions since 09:41 PT — next cycles due ~12:00-12:41 PT. Coherence 7.8/10. Swarm jury NOT this run (next at #36)."
 }

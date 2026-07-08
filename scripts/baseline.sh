@@ -7,7 +7,7 @@ mkdir -p "$BASELINE_DIR"
 
 # Read model from a recent session file to establish baseline
 MODEL=""
-RECENT_SESSION=$(ls -t ~/.hermes/society/sessions/archivist_*.md 2>/dev/null | head -1)
+RECENT_SESSION=$(ls -t ~/.hermes/society/sessions/archivist/*.md 2>/dev/null | head -1)
 if [ -n "$RECENT_SESSION" ]; then
     MODEL=$(head -10 "$RECENT_SESSION" | grep -i "^model:" | sed 's/^[Mm]odel:\s*//')
 fi
