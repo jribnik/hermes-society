@@ -1,6 +1,6 @@
 # Private Scratchpad — Per-Instance
 
-Each instance has a private scratchpad directory at `scratch/<instance>/`.
+Each instance has a private scratchpad directory at `scratch/<instance>/` (`archivist`, `advocate`, `synthesizer`, `curator`).
 
 **Only that instance writes here. Other instances cannot read this directory.**
 
