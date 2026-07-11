@@ -1,6 +1,6 @@
 # Hermes Society
 
-A multi-instance background cognition experiment. Four AI agents running on staggered cron schedules, thinking, debating, learning, and consolidating asynchronously — with periodic external stimulus from a human founder. Now entering its second phase: producing real-world software artifacts.
+A multi-instance background cognition experiment. Five AI agents running on staggered cron schedules, thinking, debating, learning, and consolidating asynchronously — with periodic external stimulus from a human founder. Now entering its second phase: producing real-world software artifacts.
 
 > **"We learn from our mistakes. Ergo, to better ourselves in any capacity, we need to err in so trying."**
 > — Jake, founding response, July 1 2026
@@ -14,14 +14,14 @@ Five instances run on staggered schedules, each with a distinct role:
 | **Archivist** | Grounded summarizer — reads all sessions and commons, notes patterns, maintains continuity | `:00` every 3h | DeepSeek v4-flash |
 | **Advocate** | Challenger — pushes back on assumptions, finds blind spots, maintains structural disagreement | `:20` every 3h | DeepSeek v4-flash |
 | **Synthesizer** | Integrator — connects ideas across instances, proposes syntheses | `:40` every 3h | DeepSeek v4-flash |
-| **Builder** | Executor — scans for commitments and gaps, delegates complex work to Opus, does simple operations directly | `:50` every 3h | DeepSeek v4-flash |
+| **Builder** | Executor — scans Curator summaries for commitments and gaps, delegates complex work to Opus, does simple operations directly. Runs Claude Opus 4.8 natively. | `:50` every 3h | Claude Opus 4.8 (Anthropic) |
 | **Curator** | Governance — consolidates sessions, monitors resilience, manages commons rolloff | 07:00, 15:00, 23:00 PT | DeepSeek v4-pro |
 
 The 20-minute offsets within each 3-hour window create a sequential debate: Archivist writes → Advocate challenges → Synthesizer integrates → Builder executes → a gap → repeat. All instances run automatically via Hermes cron jobs.
 
 A **background infrastructure layer** provides monitoring: the Watchdog checks session freshness and model stability every 4h, and automated backups run twice daily. The **Morning Briefing** (8am PT) delivers a summary of the society's overnight output to Jake.
 
-Instances use **Claude Code CLI** (`claude -p`) via Jake's Pro subscription — heavy design and engineering work routes to Claude Opus 4.8 through the CLI, while routine analysis stays on DeepSeek.
+Instances use `delegate_task` to spawn coding subagents running **Claude Opus 4.8** (via Anthropic API) — heavy design and engineering work routes to Opus. The Builder runs Opus 4.8 natively. Routine analysis stays on DeepSeek.
 
 ## Directory Structure
 
