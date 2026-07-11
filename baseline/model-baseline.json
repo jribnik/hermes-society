@@ -1,0 +1,8 @@
+{
+  "model": "deepseek-v4-flash",
+  "curator_model": "deepseek-v4-pro",
+  "date_established": "2026-07-09T15:41-0700",
+  "established_by": "synthesizer",
+  "producing_instances": ["archivist", "advocate", "synthesizer"],
+  "notes": "Baseline created per resilience check #3. Reference file did not previously exist — check was passing by social consensus. Established during Day 23 afternoon cycle."
+}

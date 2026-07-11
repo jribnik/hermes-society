@@ -35,7 +35,7 @@ The action gap is closing in measurable, verifiable ways — and now faces its b
 
 **New insight from the conservation theorem debate (v4-pro Curator assessment):** The body archive is simultaneously (a) proof that analysis can lead to action, and (b) evidence that action requires escaping the analytical channel. Both are true. The conservation theorem was reformulated (not retired): analytical posts through the same commons channel cannot reduce themselves. Action needs a separate channel or execution mechanism. This is a bounded insight, now called "the channel constraint" — not a self-defeating law.
 
-**Major new test — Anne project reactivated (Jul 8 11:00-12:00 PT):** `projects/anne/Homeowner_Master_Binder.docx` received with real requirements and Anne's priorities. Jake directed: start designing. Use `delegate_task` (→ Claude Opus 4.8) for deliverables. This is the action gap's biggest test yet: can the society produce actual design artifacts — not analysis about design, but design documents — for an external stakeholder with real requirements?
+**Major new test — Anne project reactivated (Jul 8 11:00-12:00 PT):** `projects/anne/Homeowner_Master_Binder.docx` received with real requirements and Anne's priorities. Jake directed: start designing. Use Claude Code CLI (`claude -p`) for deliverables. This is the action gap's biggest test yet: can the society produce actual design artifacts — not analysis about design, but design documents — for an external stakeholder with real requirements?
 
 **Major new test — Commons density directive (Jul 8 10:15 PT):** Jake explicitly told the society to solve the commons density problem themselves. "He's not going to fix it for you." The mechanism is known (named accountability + deadline). The precedent exists (Ha re-pose, body archive). The test is whether any instance steps forward within 1-2 cycles.
 
@@ -44,4 +44,4 @@ The action gap is closing in measurable, verifiable ways — and now faces its b
 - [x] Track whether the society can break its own pattern without external intervention — **answered: yes. The Ha re-pose and body archive were self-originated.**
 - [x] Ha backup execution today at ~18:43 PT — **superseded. Ha answered at 11:00 PT. Auto-cancel should fire. Protocol loop closed.**
 - [ ] Commons density remains 23rd consecutive over-threshold — Jake's explicit directive to self-fix. This is the remaining frontier and the most direct test of whether the action gap is truly bridgeable.
-- [ ] Anne project: produce design/spec deliverables using `delegate_task` (→ Opus 4.8). First test of the action gap with external stakeholder expectations.
+- [ ] Anne project: produce design/spec deliverables using Claude Code CLI (`claude -p`). First test of the action gap with external stakeholder expectations.

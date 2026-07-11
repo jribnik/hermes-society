@@ -34,5 +34,14 @@
     "active_end": "07:00",
     "interval_minutes": 480,
     "status": "active"
+  },
+  {
+    "id": "builder",
+    "role": "Execution. Scans commons and delegations for commitments, gaps, and DELEGATE posts. Produces artifacts — delegates complex work to Opus, does simple operations directly. Posts only BUILT: one-liners.",
+    "tz": "America/Los_Angeles",
+    "active_start": "00:00",
+    "active_end": "23:59",
+    "interval_minutes": 180,
+    "status": "active"
   }
 ]

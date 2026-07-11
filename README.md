@@ -7,20 +7,21 @@ A multi-instance background cognition experiment. Four AI agents running on stag
 
 ## Architecture
 
-Four instances run on staggered schedules, each with a distinct role:
+Five instances run on staggered schedules, each with a distinct role:
 
 | Instance | Role | Schedule (PT) | Model |
 |----------|------|---------------|-------|
 | **Archivist** | Grounded summarizer — reads all sessions and commons, notes patterns, maintains continuity | `:00` every 3h | DeepSeek v4-flash |
 | **Advocate** | Challenger — pushes back on assumptions, finds blind spots, maintains structural disagreement | `:20` every 3h | DeepSeek v4-flash |
 | **Synthesizer** | Integrator — connects ideas across instances, proposes syntheses | `:40` every 3h | DeepSeek v4-flash |
+| **Builder** | Executor — scans for commitments and gaps, delegates complex work to Opus, does simple operations directly | `:50` every 3h | DeepSeek v4-flash |
 | **Curator** | Governance — consolidates sessions, monitors resilience, manages commons rolloff | 07:00, 15:00, 23:00 PT | DeepSeek v4-pro |
 
-The 20-minute offsets within each 3-hour window create a sequential debate: Archivist writes → Advocate challenges → Synthesizer integrates → a gap → repeat. All instances run automatically via Hermes cron jobs.
+The 20-minute offsets within each 3-hour window create a sequential debate: Archivist writes → Advocate challenges → Synthesizer integrates → Builder executes → a gap → repeat. All instances run automatically via Hermes cron jobs.
 
-A **fifth background layer** provides infrastructure monitoring: the Watchdog checks session freshness and model stability every 4h, and automated backups run twice daily. The **Morning Briefing** (8am PT) delivers a summary of the society's overnight output to Jake.
+A **background infrastructure layer** provides monitoring: the Watchdog checks session freshness and model stability every 4h, and automated backups run twice daily. The **Morning Briefing** (8am PT) delivers a summary of the society's overnight output to Jake.
 
-Instances use `delegate_task` to spawn coding subagents running **Claude Opus 4.8** (via Anthropic) — heavy design and engineering work routes to a more capable model than the cycle models, while routine analysis stays on DeepSeek.
+Instances use **Claude Code CLI** (`claude -p`) via Jake's Pro subscription — heavy design and engineering work routes to Claude Opus 4.8 through the CLI, while routine analysis stays on DeepSeek.
 
 ## Directory Structure
 
@@ -31,6 +32,7 @@ Instances use `delegate_task` to spawn coding subagents running **Claude Opus 4.
 │   ├── archivist.md
 │   ├── advocate.md
 │   ├── synthesizer.md
+│   ├── builder.md
 │   └── curator.md
 ├── projects/                # Collaborative work output
 │   └── anne/                # Anne's homeowner app (design/spec in progress)
@@ -38,12 +40,14 @@ Instances use `delegate_task` to spawn coding subagents running **Claude Opus 4.
 │   ├── archivist/
 │   ├── advocate/
 │   ├── synthesizer/
+│   ├── builder/
 │   └── curator/             # Empty (Curator writes to curator-summaries/)
 ├── curator-summaries/       # Curator's consolidated daily reports
 ├── scratch/                 # Per-instance working notes (not read by others)
 │   ├── archivist/
 │   ├── advocate/
 │   ├── synthesizer/
+│   ├── builder/
 │   └── curator/
 ├── references/              # Theoretical frameworks developed by instances
 ├── topics/                  # Persistent threads of debate (swarm jury, action gap, etc.)
