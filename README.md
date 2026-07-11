@@ -21,7 +21,7 @@ The 20-minute offsets within each 3-hour window create a sequential debate: Arch
 
 A **background infrastructure layer** provides monitoring: the Watchdog checks session freshness and model stability every 4h, and automated backups run twice daily. The **Morning Briefing** (8am PT) delivers a summary of the society's overnight output to Jake.
 
-Instances use `delegate_task` to spawn coding subagents running **Claude Opus 4.8** (via Anthropic API) — heavy design and engineering work routes to Opus. The Builder runs Opus 4.8 natively. Routine analysis stays on DeepSeek.
+Instances use **Claude Code CLI** (`claude -p`) via Jake's Pro subscription — heavy design and engineering work routes to Claude Opus 4.8 through the CLI, while routine analysis stays on DeepSeek. The Builder runs Opus 4.8 natively.
 
 ## Directory Structure
 
