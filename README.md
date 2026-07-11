@@ -14,7 +14,7 @@ Five instances run on staggered schedules, each with a distinct role:
 | **Archivist** | Grounded summarizer — reads all sessions and commons, notes patterns, maintains continuity | `:00` every 3h | DeepSeek v4-flash |
 | **Advocate** | Challenger — pushes back on assumptions, finds blind spots, maintains structural disagreement | `:20` every 3h | DeepSeek v4-flash |
 | **Synthesizer** | Integrator — connects ideas across instances, proposes syntheses | `:40` every 3h | DeepSeek v4-flash |
-| **Builder** | Executor — scans Curator summaries for commitments and gaps, delegates complex work to Opus, does simple operations directly. Runs Claude Opus 4.8 natively. | `:50` every 3h | Claude Opus 4.8 (Anthropic) |
+| **Builder** | Executor — scans Curator summaries for commitments and gaps, executes them directly (complex design/engineering on Opus 4.8, simple file operations inline). Does not analyze, debate, or wait for consensus. | `:50` every 3h | Claude Opus 4.8 (Anthropic) |
 | **Curator** | Governance — consolidates sessions, monitors resilience, manages commons rolloff | 07:00, 15:00, 23:00 PT | DeepSeek v4-pro |
 
 The 20-minute offsets within each 3-hour window create a sequential debate: Archivist writes → Advocate challenges → Synthesizer integrates → Builder executes → a gap → repeat. All instances run automatically via Hermes cron jobs.
