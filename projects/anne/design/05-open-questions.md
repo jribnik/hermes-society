@@ -12,7 +12,7 @@ These are decisions that require **Jake** (product/technical direction) or **Ann
 |---|----------|-------|----------------|---------------------|
 | A1 | **Monetization model** — one-time purchase, subscription, freemium, or free (as a lead-gen tool for Anne's business)? | Anne + Jake | Drives whether we need billing infra, paywall gating, and cloud-cost budgeting in MVP. | ✅ **ANSWERED (Jul 12):** Freemium. Anne suggests exploring category-specific ads (home improvement/handyperson) as an additional revenue stream. |
 | A2 | **Is the app truly separate from Anne's business**, or is there a "powered by Anne" / pro-assist tie-in later? | Anne | Affects branding, whether a "trusted pro" role exists, and data-sharing design. | ✅ **ANSWERED (Jul 12):** Fully separate, generalized consumer app for nationwide use — not tied to Anne's business. Anne wants homeowners anywhere to manage their home, document issues, and track replacement/maintenance. Design pro-assist role as optional Phase 4 add-on per original recommendation. |
-| A3 | **Target launch platform priority** — iOS-first, Android-first, or true simultaneous? | Jake | Even with cross-platform stack, QA and store approval effort differ. | Simultaneous via React Native (see Doc 03), but designate iOS as the primary QA target for the first beta. |
+| A3 | **Target launch platform priority** — iOS-first, Android-first, or true simultaneous? | Jake | Even with cross-platform stack, QA and store approval effort differ. | ✅ **ANSWERED (Jul 12):** Both iPhone and Android on launch. Simultaneous via React Native. |
 | A4 | **Who seeds the initial home record** — the homeowner alone, or with Anne's help at a service visit? | Anne | Determines onboarding UX weight and whether a guided/pro-assisted flow is MVP or later. | ✅ **ANSWERED (Jul 12):** Both tiers — homeowner can self-serve for free, OR pay someone (pro-assist) to enter the data for them. Pro-assist is a paid option from day one, not deferred. |
 | A5 | **Branding / name** — is "Anne Homeowner App" the product name or a placeholder? | Anne | Needed for store listing, splash, icon, and copy. | Treat as placeholder; needs a real consumer-facing name before beta. |
 
@@ -37,8 +37,8 @@ These are decisions that require **Jake** (product/technical direction) or **Ann
 |---|----------|-------|----------------|---------------------|
 | C1 | **Custom equipment types** — can users add types not in the ~80-item ontology? | Anne | Homes have oddball equipment; rigid lists frustrate users. | ✅ **ANSWERED (Jul 12):** Yes — users can add their own equipment types. Implement as free-text custom types within each category, promotable to proper classes later. |
 | C2 | **How granular should "location" be** — room-level, wall/zone within room, or exact pin coordinates? | Anne + Jake | Affects map data model and marking UX (Doc 04). | ✅ **ANSWERED (Jul 12):** Pin on floor plan is preferred, but needs investigation into how homeowners would map/place pins (UX challenge). Support both named room/area and optional pin coordinates — the pin placement UX needs design work. |
-| C3 | **Do users draw their own floorplan, upload one, or pick a template?** | Anne + Jake | Biggest UX risk in the map feature; drawing tools are expensive to build. | MVP: upload an image (photo of a plan / sketch) OR pick a simple room-list fallback. Native drawing tool deferred. See Doc 03 §7. |
-| C3a | If upload: acceptable sources? (builder PDF plan, hand sketch photo, appraisal drawing) | Anne | Sets expectations for image quality and calibration. | Accept any image; pins are placed by the user, no auto-registration needed. |
+| C3 | **Do users draw their own floorplan, upload one, or pick a template?** | Anne + Jake | Biggest UX risk in the map feature; drawing tools are expensive to build. | ✅ **ANSWERED (Jul 12):** Start with a list of rooms to choose from. Photo upload and drawing tool deferred to later iterations. |
+| C3a | If upload: acceptable sources? (builder PDF plan, hand sketch photo, appraisal drawing) | Anne | Sets expectations for image quality and calibration. | Deferred — room-list MVP first, revisit when photo upload is added. |
 | C4 | **Maintenance cadence defaults** — are the standard cadences (e.g., 1–3 month filter, annual HVAC, semiannual detector test) authoritative from Anne? | Anne | Anne's expertise is the differentiator; defaults should be *her* recommendations. | ✅ **ANSWERED (Jul 12):** Follow industry standard. Anne is comfortable with standard cadences — no need for custom overrides. Proceed with the defaults in Doc 04. |
 | C5 | **Filter size format** — free text, or structured (W×H×D)? | Anne | Structured enables validation and future reorder; free text is faster. | ✅ **ANSWERED (Jul 12):** Free text. Keep it simple — no structured fields needed. |
 
@@ -48,7 +48,7 @@ These are decisions that require **Jake** (product/technical direction) or **Ann
 
 | # | Question | Owner | Why it matters | Recommended default |
 |---|----------|-------|----------------|---------------------|
-| D1 | **Ratify the stack** — React Native + Supabase (recommended in Doc 03) vs. alternatives? | Jake | Foundational; the society leaned toward RN+Supabase but did not ratify. | Adopt **React Native (Expo) + Supabase** per Doc 03 recommendation. Needs Jake's sign-off. |
+| D1 | **Ratify the stack** — React Native + Supabase (recommended in Doc 03) vs. alternatives? | Jake | Foundational; the society leaned toward RN+Supabase but did not ratify. | ✅ **ANSWERED (Jul 12):** Ratified. React Native (Expo) + Supabase. Jake has signed off. |
 | D2 | **Offline sync conflict policy** — last-write-wins vs. field-level merge vs. per-entity rules? | Jake | Single-owner homes rarely conflict, but sharing (B2) changes this. | Last-write-wins per record in MVP; revisit when sharing lands. See Doc 03 §5. |
 | D3 | **Where do photos/manuals live** — Supabase Storage, or a dedicated CDN/object store? | Jake | Cost and offline caching strategy depend on this. | Supabase Storage in MVP with local device cache; re-evaluate at scale. See Doc 03 §6. |
 | D4 | **Data residency / privacy posture** — any regulatory constraints (home data can be sensitive)? | Jake | Affects hosting region and privacy policy. | US region default; add privacy policy before store submission. |
@@ -73,8 +73,8 @@ These are decisions that require **Jake** (product/technical direction) or **Ann
 
 The following must be resolved (or the recommended default explicitly accepted) before Phase 1 development begins:
 
-1. **D1** — Ratify the stack (React Native + Supabase). ⬅️ **Still needs Jake.**
-2. **C3** — Floorplan input method (upload image vs. draw vs. room-list). This is the highest-risk UX decision. ⬅️ **Still open — Anne hasn't weighed in on this yet.**
+1. ~~**D1** — Ratify the stack (React Native + Supabase).~~ ✅ **Resolved (Jul 12):** Jake ratified RN + Supabase.
+2. ~~**C3** — Floorplan input method (upload image vs. draw vs. room-list).~~ ✅ **Resolved (Jul 12):** Start with room list; photo upload and drawing deferred.
 3. ~~**C4** — Anne's review of the seed maintenance cadence table.~~ ✅ **Resolved (Jul 12):** Follow industry standard.
 4. ~~**A1** — Monetization direction.~~ ✅ **Resolved (Jul 12):** Freemium + category ads.
 5. ~~**B4** — Whether Emergency & Safety is pulled into MVP.~~ ✅ **Resolved (Jul 12):** Yes, promote into MVP.

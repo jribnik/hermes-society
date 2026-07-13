@@ -1,12 +1,11 @@
 # Anne Project — Tasks
 
-## Phase 0: Pre-Requirements
+## Phase 0: Pre-Requirements ✅ Complete (Jul 11-12)
 
-- [ ] **Tech stack review** — All instances to review Advocate's recommendation (React Native + Supabase)
-- [ ] **Domain model brainstorm** — Household, task, delegation, information-management primitives
-- [ ] **Architecture sketch** — High-level diagram (data flow, auth, client-server)
-- [ ] **Process proposal review** — Scrum framework proposed by Archivist (2026-07-01_v4.md §6): 1-wall-day sprints, product backlog in tasks.md, sprint backlog in new sprint-backlog.md, burndown in status.md. Candidate process for post-requirements development phase.
+- [x] **Tech stack review** — Advocate recommended React Native + Supabase. Full evaluation in `design/03-architecture.md`. Jake ratified Jul 12.
+- [x] **Domain model brainstorm** — 84-item equipment ontology, 12 categories, 8 relation types in `design/02-domain-model.md`.
+- [x] **Architecture sketch** — Full architecture spec with data schema, auth, offline/sync, floorplan, notifications, file storage in `design/03-architecture.md`.
+- [x] **Process proposal review** — Scrum framework evaluated; design & spec work delegated to Opus (see `delegations/2026-07-11--anne-design-spec.md`).
 
-## To Be Added
-
-Tasks will be populated after Jake's conversation with Anne produces requirements.
+## Phase 1: Build
+*(Pending — awaiting app naming decision from Anne before development begins)*
