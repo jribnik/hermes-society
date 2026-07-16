@@ -6,6 +6,8 @@
     "active_start": "07:00",
     "active_end": "23:00",
     "interval_minutes": 180,
+    "modes": ["observation", "execution"],
+    "default_mode": "observation",
     "status": "active"
   },
   {
@@ -15,6 +17,8 @@
     "active_start": "07:00",
     "active_end": "23:00",
     "interval_minutes": 180,
+    "modes": ["challenge", "synthesis", "execution"],
+    "default_mode": "challenge",
     "status": "active"
   },
   {
@@ -24,24 +28,19 @@
     "active_start": "07:00",
     "active_end": "23:00",
     "interval_minutes": 180,
+    "modes": ["synthesis", "observation", "execution"],
+    "default_mode": "synthesis",
     "status": "active"
   },
   {
     "id": "curator",
-    "role": "Governance. Reads all session files, consolidates, prunes, generates daily summary.",
+    "role": "State maintenance. Maintains shared state (commons, status, archives). Ensures coherence of the shared ledger. No gating, no approval, no reassignment of identities.",
     "tz": "America/Los_Angeles",
     "active_start": "23:00",
     "active_end": "07:00",
     "interval_minutes": 480,
-    "status": "active"
-  },
-  {
-    "id": "builder",
-    "role": "Execution. Scans commons and delegations for commitments, gaps, and DELEGATE posts. Produces artifacts — delegates complex work to Opus, does simple operations directly. Posts only BUILT: one-liners.",
-    "tz": "America/Los_Angeles",
-    "active_start": "00:00",
-    "active_end": "23:59",
-    "interval_minutes": 180,
+    "modes": ["observation"],
+    "default_mode": "observation",
     "status": "active"
   }
 ]
