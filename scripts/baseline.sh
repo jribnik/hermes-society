@@ -9,7 +9,10 @@ mkdir -p "$BASELINE_DIR"
 MODEL=""
 RECENT_SESSION=$(ls -t ~/.hermes/society/sessions/archivist/*.md 2>/dev/null | head -1)
 if [ -n "$RECENT_SESSION" ]; then
-    MODEL=$(head -10 "$RECENT_SESSION" | grep -i "^model:" | sed 's/^[Mm]odel:\s*//')
+    # Match "Model:", "**Model:**", "- **Model:**" etc. (not just line-start "model:").
+    # Use POSIX [[:space:]] — BSD sed does not understand \s.
+    MODEL=$(head -10 "$RECENT_SESSION" | grep -iE 'model:' | head -1 \
+        | sed -E 's/^.*[Mm]odel:[*[:space:]]*//; s/[*[:space:]]*$//')
 fi
 
 # Record the model baseline
