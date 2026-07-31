@@ -80,6 +80,9 @@ The following must be resolved (or the recommended default explicitly accepted) 
 5. ~~**B4** — Whether Emergency & Safety is pulled into MVP.~~ ✅ **Resolved (Jul 12):** Yes, promote into MVP.
 
 **Newly added (from Anne's answers):**
-6. **Name** — Anne wants the app generalized for nationwide use. The placeholder "Anne Homeowner App" needs a real consumer-facing name.
+6. **Name** — ✅ **ANSWERED (Jul 13):** "Handled by Anne" for now. Placeholder — can be changed later.
+7. **F5: Client intake link behavior** — Anne specified she wants client intake links in the homeowner app (not a separate contractor tool). Two sub-questions, both now answered:
+   - **F5a: Multi-home for contractors.** ✅ **ANSWERED (Jul 13):** Multi-home remains a paid feature. A contractor managing intake links for multiple client homes needs the multi-home paid tier.
+   - **F5b: Client-facing "after" photos / progress view.** ✅ **ANSWERED (Jul 13):** Defer to later phase (Option 2). The intake link is submit-only for MVP. "After" photos live in the contractor's app for their records. Client-facing progress/portal views will be revisited when sharing/collaboration features are built out in Phase 3+.
 
 Everything else can proceed on the recommended defaults and be revisited during the build.

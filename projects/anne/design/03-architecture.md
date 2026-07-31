@@ -135,9 +135,22 @@ contacts                          -- "Contractor/Pro" (R6)
 paint_entries                     -- "Paint Color"
   id, home_id, color_name, color_code, brand, sheen,
   location_id (nullable), notes, document_id (nullable)
+
+intake_links                      -- "Task Intake Link" (Feature 5)
+  id, home_id,
+  token(text unique),             -- the secret slug in the URL
+  is_active(bool), created_at, expires_at (nullable)
+
+task_submissions                  -- "Client Task Submission" (Feature 5)
+  id, home_id, intake_link_id,
+  description(text),              -- "What needs to be done?"
+  submitter_name (nullable),      -- optional name from the client
+  status(pending|converted|dismissed),
+  converted_task_id (nullable),   -- → maintenance_tasks.id when created
+  submitted_at
 ```
 
-Key indexes: `equipment_items(home_id, location_id)`, `maintenance_tasks(home_id, next_due_date)`, `reminders(home_id, fire_at, status)`, `documents(home_id, equipment_item_id)`.
+Key indexes: `equipment_items(home_id, location_id)`, `maintenance_tasks(home_id, next_due_date)`, `reminders(home_id, fire_at, status)`, `documents(home_id, equipment_item_id)`, `intake_links(home_id, token)`, `task_submissions(home_id, status)`. Photos submitted via intake links use the existing `documents` table (one row per submission photo, linked via `task_submissions` → `documents`).
 
 ---
 

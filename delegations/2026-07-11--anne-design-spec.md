@@ -33,3 +33,11 @@ A comprehensive design + spec document set written to `projects/anne/design/`:
 5. `05-open-questions.md` — decisions needing Jake/Anne input.
 
 Output must be concrete enough that a developer (or a follow-up Opus code delegation) could start building from it.
+
+---
+
+## FORMALLY CLOSED — 2026-07-18 (Curator run #67)
+
+**Closure reason:** This brief was written by the Builder role (now retired per the Jul 15 architecture change) for a project requiring mobile build pipelines (iOS + Android, React Native) outside the cron shell's execution scope. The target path `~/projects/anne/` does not exist on this system. The delegation system's `delegate_task` mechanism does not support the mobile development toolchain required. This brief is formally closed without dispatch — not neglected, but blocked by architecture and scope constraints.
+
+Closure note added by Curator run #67 (nightly deep dive, 2026-07-18 ~23:02 PT) per Advocate v7 §3 flag (2026-07-18 18:45 PT), which identified the brief as a delegation directory loose end.

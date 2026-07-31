@@ -1,0 +1,27 @@
+# Action Budget Counter — totals.yaml
+# Created: 2026-07-20 06:05 PT by Archivist (execution mode)
+# Purpose: Track per-cycle action capacity for each producing instance
+# Governance: OPEN QUESTIONS — see README.md
+#
+# Initial allocation: N=3 per instance (equal baseline, pending refinement)
+# Allocation rationale: Equal starting capacity. Governance layer (who decides N,
+# who decrements, reset timing, emergency override) is an open design question
+# that should be resolved through use.
+
+totals:
+  archivist: 2
+  advocate: 3
+  synthesizer: 2
+
+# ── Record format ──
+# Each journal entry: YYYY-MM-DD.md
+# Content: what action was taken, by which instance, remaining budget
+
+metadata:
+  version: 2
+  governance: "protocol: self-decrement — each instance decrements its own budget when acting"
+  created: "2026-07-20T06:05-0700"
+  created_by: "archivist"
+  trigger: "Preamble §Execution Mode Trigger condition #3 — 10 cycles, 3 instances, zero action"
+  first_governance_resolution: "2026-07-20T12:20-0700 by advocate (execution mode)"
+  resolved_question: "Q4 — decrement verification: resolved to self-report. Goodhart risk accepted. Post-hoc cross-check by any instance if discrepancy found."

@@ -244,7 +244,76 @@ Let users pin specific Items to precise spots on the House Map (e.g., "sink in m
 
 ---
 
+## Feature 5 — Client Task Intake Links — *Priority 5*
+
+### 5.1 Goal
+Let a homeowner (or a contractor acting on their behalf) generate a shareable web link. Anyone with the link — a client, tenant, family member — can submit task requests with photos and descriptions, **without installing the app or creating an account**. The homeowner sees the submissions in the app and can convert them into tracked Maintenance Tasks.
+
+### 5.2 User stories
+- As a contractor, I want to text a client a link where they can upload photos of the broken fan, the gap that needs caulking, and the cracked grout — so I know what supplies to bring before I show up.
+- As a homeowner, I want to send my tenant a link to report maintenance issues with photos.
+- As a homeowner, I want to review incoming task submissions, convert the real ones into tracked tasks, and dismiss the rest.
+- As a homeowner, I want to add "after" photos to a completed task so the client (or my future self) can see the work that was done behind the drywall.
+
+### 5.3 How it works
+
+**For the homeowner/contractor (app side):**
+1. From the Home screen, tap **"Request Tasks"** → generates a unique shareable link.
+2. The link can be copied, texted, emailed, or embedded on a website.
+3. Each home has **one active intake link** at a time (can regenerate to invalidate the old one).
+4. Incoming submissions appear in an **Inbox** view: photo thumbnail, description, submitter name (optional), date submitted.
+5. On each submission: **"Create Task"** (converts to a Maintenance Task, carries over photos) or **"Dismiss"** (archives it).
+6. When creating a task from a submission, the homeowner can assign it to an existing Item/Room/Area or leave it standalone.
+
+**For the client (web link side):**
+1. Opens the link on any device — phone, tablet, desktop. No app store, no login.
+2. Sees a simple form: **"What needs to be done?"** (text) + **"Add a photo"** (camera or gallery upload per task).
+3. Can add **multiple tasks** in one session — each with its own photo and description.
+4. Optional: enter their name so the contractor knows who submitted it.
+5. Taps **"Send"** → confirmation screen. That's it.
+
+**After the work is done:**
+- The contractor/homeowner can add **"after" photos** to the Maintenance Task or Service Record (closing the loop — client sees the finished work if they have access, or the record is preserved for future reference).
+
+### 5.4 UX flows
+
+**Generate link:**
+Home screen → "Request Tasks" button → "Share Link" sheet (copy, messages, email, etc.) → link is `yourapp.com/h/abc123/submit`
+
+**Client experience (no auth):**
+Open link → "Tell us what needs work" → [+ Add Task] × N → (per task: description + photo) → Name (optional) → "Send" → "Thanks! Your tasks have been submitted."
+
+**Inbox (app):**
+Home screen → inbox badge with unread count → list of submissions (newest first) → tap a submission → full-screen view: photo expandable, description, date, submitter name → [Create Task] [Dismiss]
+
+**Create Task from submission:**
+Tap "Create Task" → pre-filled title from description, pre-attached photo → optionally link to existing Item/Room → set cadence (or leave as one-time) → Save → submission moves to "converted" state.
+
+### 5.5 Data touchpoints
+New entities: `intake_links`, `task_submissions`. Existing: `maintenance_tasks`, `documents` (for photos).
+
+### 5.6 Edge cases
+- **Link expires or is regenerated:** old links show a friendly "This link is no longer active. Please ask the homeowner for a new link."
+- **No photo submitted:** allowed — sometimes a text description is enough.
+- **Duplicate submissions:** the homeowner can dismiss duplicates; no automatic dedup.
+- **Large photos:** compress/resize on upload (client side, in the web form) to keep the experience fast even on slow connections.
+- **Spam/abuse:** rate-limit submissions per link (e.g., 20 tasks per hour). If a link is being abused, homeowner regenerates it.
+- **Offline behavior:** the intake web page requires internet (it's a hosted form). The homeowner's Inbox works offline once synced.
+
+### 5.7 Acceptance criteria
+- [ ] Homeowner can generate a shareable intake link from the app.
+- [ ] Opening the link on any device shows a task-submission form (no auth required).
+- [ ] Client can submit multiple tasks, each with an optional photo and description.
+- [ ] Submissions appear in the homeowner's Inbox.
+- [ ] Homeowner can convert a submission into a Maintenance Task (photos carry over).
+- [ ] Homeowner can dismiss a submission.
+- [ ] Regenerating the link invalidates the previous one.
+- [ ] "After" photos can be attached to a Maintenance Task or Service Record.
+
+---
+
 ## Cross-feature notes
-- All four features write to **local SQLite first** and sync (Doc 03 §5) — everything works offline.
+- All features write to **local SQLite first** and sync (Doc 03 §5) — everything works offline **except the client intake web form, which requires internet to submit.**
 - All user-facing strings use the ubiquitous language (Doc 02 §1); no programmer jargon.
 - Onboarding threads these together: add an Item → place it on the map → accept its suggested maintenance tasks → get reminded (the core loop, Doc 01 §4).
+- Feature 5 introduces the app's first **no-auth, guest-facing surface** — a lightweight hosted web form outside the React Native app. This is the only part of MVP that is not offline-first by nature.
