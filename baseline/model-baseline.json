@@ -1,8 +1,8 @@
 {
-  "model": "deepseek-v4-flash",
+  "model": "claude-sonnet-5",
   "curator_model": "deepseek-v4-pro",
-  "date_established": "2026-07-09T15:41-0700",
-  "established_by": "synthesizer",
+  "date_established": "2026-08-01T00:00-0700",
+  "established_by": "hermes-10-config-hygiene",
   "producing_instances": ["archivist", "advocate", "synthesizer"],
-  "notes": "Baseline created per resilience check #3. Reference file did not previously exist — check was passing by social consensus. Established during Day 23 afternoon cycle."
+  "notes": "Updated 2026-08-01 (HERMES-10): producing instances migrated to anthropic/claude-sonnet-5 on the Pro OAuth subscription (was deepseek-v4-flash) with a deepseek-v4-pro fallback. Curator remains deepseek-v4-pro for cross-model independence. Prior baseline (deepseek-v4-flash, Day 23) was stale and made the watchdog model-stability check false-flag an 'upgrade' every cycle."
 }
