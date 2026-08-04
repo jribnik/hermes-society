@@ -13,6 +13,8 @@ hermes-portrait.png
 hermes-portrait.svg
 society-profile.png
 society-profile.svg
+.curator-digest-last
+runs/
 check_status.py
 *.bak-*
 *.swp

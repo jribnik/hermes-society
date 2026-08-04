@@ -212,25 +212,30 @@ async function render() {
   }
 
   // Resilience checks
+  // Keys follow status.json's R#_camelCase naming (e.g. R1_sessionFreshness).
+  // Status values are flat strings like "PASS — ..."; pass/fail is derived from
+  // the leading token ("FAIL" => fail; anything else => pass).
   if (resilience) {
     html += '<h2>Resilience</h2><div class="grid">';
     const checkNames = {
-      sessionFreshness: 'Session Freshness',
-      commonsDensity: 'Commons Density',
-      modelStability: 'Model Stability',
-      backupFreshness: 'Backup Freshness',
-      disagreementHealth: 'Disagreement Health',
-      driftDetection: 'Drift Detection',
-      wikipediaVariety: 'Wikipedia Variety'
+      R1_sessionFreshness: 'Session Freshness',
+      R2_commonsArchive: 'Commons Archive',
+      R3_modelStability: 'Model Stability',
+      R4_backupFreshness: 'Backup Freshness',
+      R5_disagreementHealth: 'Disagreement Health',
+      R6_hallucinationDrift: 'Hallucination/Drift',
+      R7_wikipediaVariety: 'Wikipedia Variety',
+      R8_sessionExportFreshness: 'Session Export Freshness'
     };
     for (const [key, label] of Object.entries(checkNames)) {
       const r = resilience[key];
       if (r) {
+        const pass = !/^FAIL/i.test(String(r).trim());
         html += `
           <div class="card">
             <h3>${label}</h3>
-            <div class="status"><span class="dot ${r.pass ? 'green' : 'red'}"></span> ${r.pass ? 'PASS' : 'FAIL'}</div>
-            <div class="small">Owner: ${r.owner || 'all'}</div>
+            <div class="status"><span class="dot ${pass ? 'green' : 'red'}"></span> ${pass ? 'PASS' : 'FAIL'}</div>
+            <div class="small">${String(r).slice(0, 90)}</div>
           </div>`;
       }
     }
