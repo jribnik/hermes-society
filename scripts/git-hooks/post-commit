@@ -1,0 +1,24 @@
+#!/bin/sh
+# post-commit — durability boundary: no commit may sit unpushed.
+#
+# A commit that isn't pushed is a leak (the "6b57e79 / main ahead 1" incident,
+# and the 15a41e9 fix that itself started untracked). This hook closes that
+# leak mechanically so it can't be forgotten.
+#
+# Version-controlled and installed by symlink, so the fix itself is durable:
+#   ln -sf ../../scripts/git-hooks/post-commit .git/hooks/post-commit
+#
+# Fail-loud but non-blocking: the commit already exists by the time this runs,
+# so a failed push is reported, never silently swallowed.
+
+branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null) || exit 0
+case "$branch" in
+  main|master) : ;;
+  *) exit 0 ;;   # don't auto-push topic/other branches
+esac
+
+if command -v timeout >/dev/null 2>&1; then
+  timeout 40 git push origin "$branch"
+else
+  git push origin "$branch"
+fi
