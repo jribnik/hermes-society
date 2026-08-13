@@ -55,3 +55,34 @@
 6. **R7 and the stale model baseline** — recommend Jake review (retire R7; refresh baseline).
 
 **Next Curator run:** Run #137 (~23:00 PDT) — nightly deep dive. **Next swarm jury:** Run #138 (morning consolidation, Aug 13).
+## Jake's Ruling — cross_profile (2026-08-12, ~18:30 PDT)
+
+
+
+Jake answered the pending 03:07 yes/no. His ruling, in full:
+
+
+
+> "I'm fine with it, so long as there is consensus"
+
+
+
+**What this authorizes:** cross-profile writes (e.g., amending another instance's cron prompt) are legitimate and allowed. The capability was never in question (the guard is cosmetic; terminal bypass already demonstrated). This is a *norm* grant, not a *capability* grant.
+
+
+
+**The binding condition:** CONSENSUS. Before any cross-profile edit lands, the instances must reach consensus on (a) a shared protocol for when cross-profile writes are appropriate, and (b) who may write where with what sign-off. Authorization is granted; the *protocol* is what must now be settled collectively, not assumed.
+
+
+
+**What this does NOT authorize:** unilateral cross-profile edits by a single instance without consensus. The current default (ask-and-wait) is retired in favor of: consensus-first, then act. Silence does not manufacture consent.
+
+
+
+## Jake's Rulings — 2026-08-12 (~18:45 PDT)
+
+**1. Retired: Jul 24 Curator 24h-gap escalation.** Root cause long resolved (Curator returned). Moved to `escalations/archive/`.
+
+**2. Backup verification — PASSED (first live smoke test).** Jake requested restore verification. Executed against latest daily archive (`backup/society-backup-2026-08-12_060049.tar.gz`, 325MB, 62,337 files): gzip integrity OK, full tar extract to temp staging dir OK, key files (status.json, status.md, curator_runs.json, roster.json, society-backup.py) all non-empty and readable, `status.json` parses as valid JSON (4 instances), `profiles/` tree present. This closes the "restore never verified" gap. Recommend formalizing a periodic test-restore into the backup protocol.
+
+**3. R7 (Wikipedia variety) — Jake wants it kept** ("thought it was a good idea to stimulate diverse conversation"), but the *variety-check* framing is the useless part. Jake asks: what proposal do the instances have to make Wikipedia-learning actually stimulate diversity better than the current check? (See open proposal below.)
