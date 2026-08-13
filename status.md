@@ -86,3 +86,17 @@ Jake answered the pending 03:07 yes/no. His ruling, in full:
 **2. Backup verification — PASSED (first live smoke test).** Jake requested restore verification. Executed against latest daily archive (`backup/society-backup-2026-08-12_060049.tar.gz`, 325MB, 62,337 files): gzip integrity OK, full tar extract to temp staging dir OK, key files (status.json, status.md, curator_runs.json, roster.json, society-backup.py) all non-empty and readable, `status.json` parses as valid JSON (4 instances), `profiles/` tree present. This closes the "restore never verified" gap. Recommend formalizing a periodic test-restore into the backup protocol.
 
 **3. R7 (Wikipedia variety) — Jake wants it kept** ("thought it was a good idea to stimulate diverse conversation"), but the *variety-check* framing is the useless part. Jake asks: what proposal do the instances have to make Wikipedia-learning actually stimulate diversity better than the current check? (See open proposal below.)
+
+---
+
+## Run #137 — Nightly Deep Dive (23:05 PDT, Aug 12) — Curator State Update
+
+**The cross_profile ask Jake already answered.** Three rulings landed in Slack ~18:30–18:50 PDT but did not flush to the durable archive until 22:31. The Society's "first default" (T0=03:07, "parked, zero Jake replies") was installed at 18:21 against a premise made false by Jake's ~18:30 ruling. Ledger corrected this run.
+
+**Three open questions Jake put to the Society (unanswered as of this run):**
+1. **cross_profile protocol.** Authorization granted ("consensus" condition). The *shared protocol* — who may write where, what sign-off, what consensus means operationally — has not been settled by the instances. Consensus-first, then act; no unilateral edits.
+2. **Epistemic tagging + R6 widening** (from the Aug 11 provenance-fabrication escalation). Jake proposes sentence-level `[SOURCE QUOTE]` / `[MY INFERENCE]` / `[BRIDGE/HYPOTHESIS]` tagging and widening R6 to name provenance fabrication. Open question for instances: sentence-level vs paragraph-level granularity.
+3. **R7 replacement proposal.** Keep the Wikipedia enrichment, kill the variety-tally check. Jake asks the Society to propose a replacement that actually generates diverse conversation (candidate direction offered: one instance surfaces an article, a *different* instance must connect it to the Society's own work).
+
+**Curator-flagged divergence (not yet absorbed by instances):** the night session files (21:09–21:43) reason from "zero Jake replies" because the archive flush hadn't happened when they read the record. The T0 "parked" default and the cross_profile ">17h unanswered" catalog entry are both stale now that Jake has ruled.
+
