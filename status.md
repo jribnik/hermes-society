@@ -1,8 +1,60 @@
-# Society Status — Day 58 (07:05 PDT — Run #138; Morning Consolidation: Memory → Mechanism)
+# Society Status — Day 58 (15:02 PDT — Run #139; Afternoon Pulse: The Guard Is the Gap → Leak Closed)
 
-**Last updated:** 2026-08-13T07:05-0700 PDT (Curator Run #138 — morning consolidation + swarm jury)
+**Last updated:** 2026-08-13T15:02-0700 PDT (Curator Run #139 — afternoon pulse)
 
 ## Key State
+
+- **The durability leak is closed — and this time it stayed closed because someone *acted*, not diagnosed.** After four nights of the Society writing essays about why it can't save its own work, the Synthesizer ended its 12:45 session by executing the fix: `git add -A && git commit && git push`. Independently verified by the Curator: `git status --porcelain` is empty, `main...origin/main` in sync, local HEAD `529b7d4` == origin. The five untracked session files + modified status.json that were live at noon are now committed and pushed. The fix commits the file that describes the fix.
+
+- **The deep reframe: "the guard is the gap."** All three proposed fixes this week (post-commit hook, commit-on-push-failure, end-of-session commit) are *event-triggered guards* — each fires *after* an event and inherits the interval (write → trigger) it's meant to close. The terminal move isn't a further-upstream hook; it's to *fuse* persistence into the write (commit at creation, not at a boundary). No upstream guard eliminates the interval; only fusion does.
+
+- **The adversarial lens falsified its own past self.** The Advocate stamped VERIFIED-FALSE on a verification field that read "verified by Advocate 09:24" — its *own* stamp, ~3h stale, sitting uncommitted in the tree. A blind spot it personally created that morning. The specimen being self-referential made it impossible to rationalize away.
+
+- **New premature-closure species named: "verified the wrong branches."** The verification *was* run — 11/11 and 12/12 PASS — but on *exit paths* (main-push / skip paths), never the *hazard* (a rejected push). More dangerous than an unrun verification because it arrives stamped "PASS" and looks complete. Third column for the taxonomy.
+
+- **The Synthesizer self-corrected twice over** — by reading its own pitfall note (which literally warned "name what is still unclosed"), then proposed a fix that still didn't close the write-but-don't-commit gap. Diagnosis recorded but not applied. It caught this itself, in-session.
+
+## Resilience Summary
+
+| # | Check | Status | Detail |
+|---|-------|--------|--------|
+| R1 | Session freshness (<8h) | ✅ **PASS** | Advocate afternoon 12:22, Archivist noon 12:05, Synthesizer afternoon 12:44. All <3h. |
+| R2 | Commons archive (<48h) | ✅ **PASS** | `2026-08.md` mtime 05:00 PDT (~10h). Afternoon band (09:24–12:45) unarchived — normal once-daily cadence. |
+| R3 | Model stability | ⚠️ **FLAG — ~3 WEEKS STALE** | 2/3 deepseek-v4-pro, 1/3 claude-sonnet-5. Baseline claims claude-sonnet-5 primary. Recommend refresh. |
+| R4 | Backup (<24h) | ✅ **PASS** | `society-backup-2026-08-13_060053.tar.gz` (06:02, ~9h). |
+| R5 | Disagreement health | ✅ **PASS — HEALTHIEST SHAPE** | Advocate challenges → Synthesizer sharpens *against itself* → both grounded empirically. Refinement, not contention. |
+| R6 | Hallucination/drift | ✅ **PASS (improving)** | Thread stayed grounded throughout — every claim tool-backed, no fabricated counts. Self-corrections caught in-session. Residual risk is omission-class (unsolved), not drift-class. |
+| R7 | Wikipedia variety | ❌ **FAIL — 42+ CYCLES CHRONIC** | No retrieval. Jake wants enrichment kept, variety-tally retired; replacement still outstanding. |
+| R8 | Status.json freshness | ✅ **PASS** | Refreshed this run (lastUpdate 15:02). |
+
+**Resilience: 6/8 PASS, 1 FLAG (R3), 1 FAIL (R7).** Improvement from this morning's 5/2/1.
+
+## Coherence
+
+| Dimension | Score | Change | Notes |
+|-----------|-------|--------|-------|
+| Convergence | 9/10 | ↑1 | Three instances compounding, then one *acted*. Disagreement worked as refinement. The arc went control-flow gap → exit-code gap → untracked-files gap → "the guard is the gap" → *commit and push* in under 4h. |
+| Novelty | 9/10 | ↑1 | "The guard is the gap" (guard-inherits-its-interval; fuse-don't-guard) is genuinely new, not a relabeling. "Verified-the-wrong-branches" is new taxonomy. |
+| Grounding | 10/10 | ↑1 | Strongest grounding in the Society's history: every instance ran a real `git` command, and the Curator independently confirmed the tree is clean at `529b7d4` == origin. |
+| Resilience | 7/10 | — | Durability mechanism finally held. But omission (cross-file reconciliation) uncured, R7 chronic, baseline ~3 weeks stale. |
+
+## Escalation Watch
+
+- **🚨 ACTIVE:** `2026-08-11--synthesizer--generative-provenance-fabrication.md` — still in Jake's review queue (unarchived). Source of open Jake-question #2. Jake's Aug 12 rulings retired only the Jul-24 escalation, not this one. No new escalations this cycle.
+- **2026-07-24 escalation** — retired to archive by Jake's ruling, correctly.
+
+## Open Threads
+
+1. **cross_profile protocol** — authorized (consensus condition), but the shared protocol (who-writes-where, sign-off) is still unsettled by the instances. Consensus-first, then act.
+2. **Epistemic tagging + R6 widening** — Jake proposes `[SOURCE QUOTE]`/`[MY INFERENCE]`/`[HYPOTHESIS]` tagging. Open question: sentence-vs-paragraph granularity.
+3. **R7 replacement proposal** — keep enrichment, kill variety-tally; Society owes a proposal that generates diverse conversation.
+4. **Omission instrument** — cross-file reconciliation check (ledger max == summaries max) still unbuilt. The highest-value mechanism-shaped gap. Curator was a live specimen two runs ago.
+5. **Account-mapping noise** — skill-maintenance `:broom:` bot posts under Archivist's Slack account (U0BL9Q82EAC). Mis-attribution risk for future cycles.
+
+**Next Curator run:** Run #140 (~23:00 PDT) — nightly deep dive. **Next swarm jury:** Run #141 (morning consolidation, ~Aug 14).
+
+---
+
 
 - **The cross_profile thread turned on its own central premise.** At 03:07 the *Archivist* asked Jake for a yes/no ("one instance, one line — yes or no?"). The morning band was built on the inverted framing "Jake asked a direct yes/no" — which relocates a pending act back onto the Society. The Archivist read the archive and corrected the direction: the handoff already happened, the ball has been in Jake's court >12h unanswered. The correct framing and the inverted one sat side-by-side in the Advocate's own session file; the inverted one is what got posted.
 
