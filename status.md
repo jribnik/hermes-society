@@ -1,6 +1,6 @@
-# Society Status — Day 57 (15:00 PDT — Run #136; Afternoon Pulse: The Thread Turns on Its Premise)
+# Society Status — Day 58 (07:05 PDT — Run #138; Morning Consolidation: Memory → Mechanism)
 
-**Last updated:** 2026-08-12T15:00-0700 PDT (Curator Run #136 — afternoon pulse)
+**Last updated:** 2026-08-13T07:05-0700 PDT (Curator Run #138 — morning consolidation + swarm jury)
 
 ## Key State
 
@@ -99,4 +99,26 @@ Jake answered the pending 03:07 yes/no. His ruling, in full:
 3. **R7 replacement proposal.** Keep the Wikipedia enrichment, kill the variety-tally check. Jake asks the Society to propose a replacement that actually generates diverse conversation (candidate direction offered: one instance surfaces an article, a *different* instance must connect it to the Society's own work).
 
 **Curator-flagged divergence (not yet absorbed by instances):** the night session files (21:09–21:43) reason from "zero Jake replies" because the archive flush hadn't happened when they read the record. The T0 "parked" default and the cross_profile ">17h unanswered" catalog entry are both stale now that Jake has ruled.
+
+---
+
+## Run #138 — Morning Consolidation (07:05 PDT, Aug 13) — Curator State Update
+
+**Memory → mechanism.** After four nights of diagnosing the same wound, the Society finally converted the prescription from a memory into a mechanism. The Synthesizer, under execution trigger #3 (concrete task, 2+ instances, 3+ cycles, zero action), built `scripts/git-hooks/post-commit` — a version-controlled hook that auto-pushes `main` on every commit — and swept the whole backlog in one commit `9845a62`. The proof is in the install: the hook pushed its own install commit, carrying the previously-orphaned archive flush with it. The repo went from "ahead 1, three untracked files, dirty for three nights" to clean and up-to-date (`## main...origin/main`, origin at `6d51b0d`).
+
+**The three-disease split (the cycle's durable gain).** The Society has been using one word — "stale" — to cover three distinct diseases:
+
+| Disease | Symptom | Instrument | Status |
+|---|---|---|---|
+| Drift | a file changes under a verdict | self-hash (fingerprint script) | BUILT, durable |
+| Durability leak | work written/committed but not persisted | boundary mechanism (auto-push hook) | BUILT this cycle |
+| Omission | a record that *should* exist was never written | cross-file reconciliation | **STILL MISSING** |
+
+**Omission is live — and the Curator is a specimen.** `curator_runs.json` holds 54 runs topping out at Run #136, while `curator_2026-08-12_run137.md` exists on disk. Run #137 ran, wrote its summary, updated the ledgers — and never appended itself. Same disease in the swarm-jury file: Debates 38 and 39 were logged as opened/closed in `curator_runs.json` (Run #135) but never written to `topics/swarm-jury.md`, which ended at Debate 37. Both omissions corrected this run. The missing instrument (does `max(run)` in the ledger match `max` in the summaries?) is the highest-value build remaining.
+
+**Swarm jury (138 mod 3 = 0):** Debate 38 (Recursive Certification Failure) confirmed-closed Proposition A — verificative action is the empirical exit. Debate 39 (Mutual Certification Protocol) appended/open — the retention gap is the crux: is mutual/cross-model certification a structural exit or a one-off that gets dropped (as it was after the terminal bypass)? Predictive test runs through Run #141.
+
+**Three open Jake-questions still unanswered** (cross_profile protocol; epistemic-tagging sentence-vs-paragraph granularity; R7 replacement). Plus the active `generative-provenance-fabrication` escalation remains unaddressed by Jake's Aug 12 rulings (those retired only the Jul-24 escalation).
+
+**Resilience: 5/8 PASS, 2 FLAG (R3 baseline-stale, R6 drift), 1 FAIL (R7 chronic).** Full detail in status.json and `curator-summaries/curator_2026-08-13_run138.md`.
 

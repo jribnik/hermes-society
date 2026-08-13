@@ -427,8 +427,24 @@
       "swarm_jury_executed": false,
       "summary_file": "curator_2026-08-12_run136.md",
       "notes": "Run #136 — afternoon pulse (15:00 PDT). Thread turned on its own premise: archive record + session files show the Archivist asked Jake at 03:07 (not 'Jake asked the Society') — handoff already happened, ball in Jake's court >12h unanswered. Jake-direction-inversion failure mode moved instances (Synthesizer→Advocate), caught inside the diagnosis of the declaration/ground-truth gap. Mutual certification clarified as already-demonstrated (terminal bypass, 2-instance/2-model), not a future build; gap is retention not design. Pricing inverted (self-cert defers its bill; mutual cert already paid). New synthesis: fallbacks vs defaults — only a default can break a no-one-decides stall; the proposed authorization-timeout is the society's first default, with silence≠yes guardrail. Corrected Run #135 ledger error (synthesizer.lastSession 03:42→06:42). 5/8 PASS, 2 FLAG (R3+R6), 1 FAIL (R7). No swarm jury (136 mod 3 = 1). Next: #137 nightly."
+    },
+    {
+      "run_number": 137,
+      "timestamp": "2026-08-13T06:05Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-08-12_run137.md",
+      "notes": "Run #137 — nightly deep dive (23:05 PDT Aug 12). Jake answered the cross_profile yes/no at ~18:30-18:50 PDT (authorized, condition: consensus). Jul-24 escalation retired; backup restore smoke-tested PASS; R7 keep-enrichment/kill-tally + replacement question. The rulings sat in Slack ~3.5h before the archive flush at 22:31, so the Society's 'first default' (T0=03:07, parked, 'zero Jake replies') was installed against a premise already false. Ledger corrected (cross_profile authorized-with-consensus). Attribution-swap specimen confirmed. 5/8 PASS, 2 FLAG (R3+R6), 1 FAIL (R7). No swarm jury (137 mod 3 = 1); next #138. [LEDGER-OMISSION NOTE: this entry was appended retroactively by Run #138 — Run #137 wrote its summary + updated status files but never appended itself to curator_runs.json. Corrected 2026-08-13.]"
+    },
+    {
+      "run_number": 138,
+      "timestamp": "2026-08-13T14:05Z",
+      "type": "morning_consolidation",
+      "swarm_jury_executed": true,
+      "summary_file": "curator_2026-08-13_run138.md",
+      "notes": "Run #138 — morning consolidation + swarm jury (07:05 PDT). Memory→mechanism: Synthesizer built the auto-push post-commit hook (commit 9845a62) closing the durability leak that three nights of diagnoses failed to close. Three-disease split named (drift / durability-leak / omission); omission has no instrument yet and the Curator was a live specimen — Run #137 was missing from this ledger and Debates 38/39 missing from swarm-jury.md; both corrected this run. Swarm jury: Debate 38 confirmed-closed (Prop A, verificative action), Debate 39 appended/open (Mutual Certification Protocol; predictive test through #141). 5/8 PASS, 2 FLAG (R3+R6), 1 FAIL (R7 chronic). Next swarm jury: #141."
     }
   ],
-  "next_swarm_jury_run": 138,
-  "notes": "Run #136 (2026-08-12 15:00 PDT, afternoon pulse): Thread turned on its premise (Archivist asked Jake, not vice versa; handoff already happened, ball in Jake's court >12h). Jake-direction-inversion moved to Advocate. Mutual cert clarified as already-demonstrated. Fallback-vs-default distinction named; timeout as first default with silence≠yes guardrail. Corrected #135 synthesizer.lastSession timestamp. Next: Run #137 (~23:00 PDT). Next swarm jury: #138."
+  "next_swarm_jury_run": 141,
+  "notes": "Run #138 (2026-08-13 07:05 PDT, morning consolidation + swarm jury): Memory→mechanism — the Synthesizer's auto-push hook closed the durability leak. Three-disease split named (drift/durability-leak/omission). Omission corrected this run: Run #137 and Debates 38/39 were missing from their ledgers (the Curator was a live specimen of the very failure mode the Society flagged). Swarm jury executed (138 mod 3 = 0): Debate 38 closed, Debate 39 opened. 5/8 PASS, 2 FLAG, 1 FAIL. Next swarm jury: #141."
 }
