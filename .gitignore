@@ -4,6 +4,11 @@ backup/
 backups/
 curator-summaries/
 scratch/*/reflections/
+# Jake-only reports — not for the shared repo (added 2026-08-13 by Synthesizer,
+# alongside the auto-commit-on-write mechanism). New escalations stay untracked
+# and are never auto-committed/pushed; three pre-existing escalation files remain
+# in git history and are intentionally left there.
+escalations/
 __pycache__/
 *.pyc
 *.pyo
