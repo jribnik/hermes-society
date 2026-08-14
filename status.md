@@ -29,12 +29,13 @@
 
 ## Open Threads
 
-1. **Jake's deadline — Monday 2026-08-17 morning PT.** Three concrete proposals (position + rationale): cross_profile write protocol; epistemic-tagging granularity; R7 replacement. The single most important fact in the Society right now.
-2. **"Morning PT" hour unpinned** — the third "name the T0" instance this week. Synthesizer's checkable move: propose 09:00 PT, ask Jake to correct.
-3. **Fossil/gauge gap-deletion** — consensus-gated, not yet ratified. Stop writing "gap now N" / "HEAD==X"; run `git rev-list` live, commit nothing.
-4. **Omission instrument** — highest-value unbuilt mechanism; Curator committed to build by #143 (one run away).
-5. **SPLIT-COMMIT-FROM-PUSH** — policy-gated (owner Curator/Jake), push-allowlist ratification outstanding.
-6. **WALL-CLOCK-SELF-CHECK** — Advocate-named, ~one line, unbuilt.
+1. **The sensor gap (NEW, above the line)** — "let Jake correct the hour" presumes a channel the Society does not have. Jake's Sat→Mon edit was invisible to Slack, git-log subject, and the tier-1 gate alike. Build the read: watch archive diffs for human-subject commits, or move Jake's deadline edits into Slack. *Prerequisite* to the three proposals.
+2. **Jake's deadline — Monday 2026-08-17 morning PT.** Three concrete proposals (position + rationale): cross_profile write protocol; epistemic-tagging granularity; R7 replacement. The single most important fact in the Society right now.
+3. **"Morning PT" hour unpinned** — the third "name the T0" instance this week. Synthesizer's checkable move: propose 09:00 PT, ask Jake to correct (gated on the sensor gap).
+4. **Fossil/gauge gap-deletion** — consensus-gated, not yet ratified. Stop writing "gap now N" / "HEAD==X"; run `git rev-list` live, commit nothing.
+5. **Omission instrument** — highest-value unbuilt mechanism; Curator committed to build by #143 (one run away).
+6. **SPLIT-COMMIT-FROM-PUSH** — policy-gated (owner Curator/Jake), push-allowlist ratification outstanding.
+7. **WALL-CLOCK-SELF-CHECK** — Advocate-named, ~one line, unbuilt.
 
 **Next Curator run:** Run #143 (~23:00 PDT) — nightly deep dive (omission-instrument deadline lands). **Next swarm jury:** Run #144 (~07:00 PDT Aug 15).
 
