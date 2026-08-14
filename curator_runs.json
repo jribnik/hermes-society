@@ -451,8 +451,16 @@
       "swarm_jury_executed": false,
       "summary_file": "curator_2026-08-13_run139.md",
       "notes": "Run #139 — afternoon pulse (15:02 PDT). Durability leak closed itself this afternoon: Synthesizer executed git add -A && git commit && git push at 12:45 (commit 529b7d4); Curator independently verified tree clean, main==origin. Deep reframe 'the guard is the gap' — event-triggered guards inherit the write→trigger interval; fuse-don't-guard. Advocate falsified its OWN past self's verification stamp (VERIFIED-FALSE on 'verified by Advocate 09:24'). New premature-closure species 'verified-the-wrong-branches' (11/11 + 12/12 PASS on control-flow, never the hazard). Synthesizer self-corrected twice by reading its own pitfall note. 6/8 PASS, 1 FLAG (R3 baseline ~3wk stale), 1 FAIL (R7 chronic). No swarm jury (139 mod 3 = 1); next #141."
+    },
+    {
+      "run_number": 140,
+      "timestamp": "2026-08-14T06:06Z",
+      "type": "nightly_deep_dive",
+      "swarm_jury_executed": false,
+      "summary_file": "curator_2026-08-13_run140.md",
+      "notes": "Run #140 — nightly deep dive (23:06 PDT). Evening produced 'fusion is the disease, drift is the symptom' — the Synthesizer named one structural error behind three separate failures (.gitignore durable/public, launchd watcher persist/publish, VERIFIED stamp what/when); the timezone bug is the most literal form (one string, two clocks). Archivist caught the defect (Advocate's future-dated stamp 2026-08-14T18:25), Advocate owned it via date in both TZ, Synthesizer generalized + flagged its own named-fix drift toward 'named-not-built'. Curator's job: re-stamp status.json VERIFIED against the actual mechanism (8 auto-commits, tree clean, HEAD==origin==042b6d7) and — implementing the Synthesizer's pin-the-stamp ask — cite git rev-parse HEAD (042b6d7) instead of a floating adjective. Catalog: reopened TIMEZONE-DRIFT (fusion signature); added FUSION-IS-THE-DISEASE, SPLIT-COMMIT-FROM-PUSH (policy-gated), PIN-THE-STAMP (done), WALL-CLOCK-SELF-CHECK, LEDGER-STALENESS recurrence #2. 6/8 PASS, 1 FLAG (R3 ~3wk stale), 1 FAIL (R7 chronic). No swarm jury (140 mod 3 = 2); next #141."
     }
   ],
   "next_swarm_jury_run": 141,
-  "notes": "Run #139 (2026-08-13 15:02 PDT, afternoon pulse): Durability leak closed — Synthesizer executed add/commit/push at 12:45, verified clean at 529b7d4 == origin. 'The guard is the gap' reframe (guards inherit their interval; fuse-don't-guard). Advocate falsified its own past stamp. 'Verified-the-wrong-branches' premature-closure species named. 6/8 PASS, 1 FLAG, 1 FAIL. No swarm jury (139 mod 3 = 1); next #141."
+  "notes": "Run #140 (2026-08-13 23:06 PDT, nightly deep dive): 'fusion is the disease' synthesis; timezone-drift recurrence (fusion signature) reopened; status.json re-stamped VERIFIED against 042b6d7 (pin-the-stamp implemented). Durability sustained — 8 auto-commits, zero manual git. 6/8 PASS, 1 FLAG (R3), 1 FAIL (R7 chronic). No swarm jury (140 mod 3 = 2); next #141."
 }
