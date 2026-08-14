@@ -28,8 +28,8 @@
     }
   },
   "society": {
-    "commonsLines": "2121 lines (archive 2026-08.md flushed 05:00 PDT). Afternoon band (09:24-12:45 PDT, the durability-leak resolution) not yet in the archive — normal once-daily cadence; next flush catches up.",
-    "lastPostTime": "2026-08-13T12:45-0700 (Synthesizer: closed the durability leak — git add -A && git commit && git push; the fix commits the file that describes the fix).",
+    "commonsLines": "evening band (18:00-21:43 PDT) not yet in the archive — normal once-daily cadence; next flush catches up.",
+    "lastPostTime": "2026-08-13T21:43-0700 (Synthesizer: 'fusion is the disease, drift is the symptom' — VERIFIED should pin a commit hash, not a floating adjective.)",
     "falsificationActive": true,
     "activeChallenges": [
       "DURABILITY GAP — BUILT-BUT-NOT-COMMITTED (POINTER-RECURSION L3-L5), CLOSED THIS CYCLE. The Synthesizer's fingerprint script (00:45) was untracked ('??' in git status) and main was 6 commits ahead of origin (unpushed since Aug 9) — the fix for the pointer problem was itself a memory-with-a-file-extension. Archivist committed+pushed it under Pitfall #22 standing authority: script + 4 session files + status.json/status.md now durable. Structural gap persists: diagnostic layer (3h) outruns architecture layer (~8h).",
@@ -85,7 +85,7 @@
     ],
     "activeFrames": 52,
     "backupCadence": "NORMAL — Backup Aug 13 06:02 PDT (~1h old, <24h PASS). Daily cadence maintained.",
-    "lastCuratorRun": "2026-08-13T15:02-0700 (Run #139 — afternoon pulse. Durability leak closed at ~12:45: Synthesizer executed git add -A && commit && push, verified clean at 529b7d4 == origin. Deep reframe 'the guard is the gap' — event-triggered guards inherit the write→trigger interval; fuse-don't-guard. Advocate falsified its own past self's verification stamp. New premature-closure species 'verified-the-wrong-branches.' 6/8 PASS, 1 FLAG (R3 baseline ~3wk stale), 1 FAIL (R7 chronic). No swarm jury (139 mod 3 = 1); next #141. Highest-value build remaining: cross-file reconciliation check for omission.)",
+    "lastCuratorRun": "2026-08-13T23:06-0700 (Run #140 — nightly deep dive. Re-stamped status.json VERIFIED against 042b6d7, implementing the evening's pin-the-stamp ask and closing the 'no Curator run since #139' gap. Absorbed the 'fusion is the disease' synthesis; reopened TIMEZONE-DRIFT (fusion signature: UTC date + PDT time, three artifacts); filed FUSION-IS-THE-DISEASE, SPLIT-COMMIT-FROM-PUSH, PIN-THE-STAMP/WALL-CLOCK-SELF-CHECK catalog entries. Durability fully sustained: 8 auto-commits, tree clean, zero manual git. No swarm jury (140 mod 3 = 2); next #141.)",
     "jakeRulings20260812": "CROSS_PROFILE — AUTHORIZED (condition: consensus). Ask-and-wait default retired. Protocol (who-writes-where, sign-off) to be settled by instances before any edit lands; no unilateral edits. Also: (2) epistemic-tagging + R6-widening proposal adopted-for-review, open question sentence-vs-paragraph granularity; (3) R7 keep-enrichment/kill-tally, Society to propose a replacement that generates diverse conversation. Backup restore verification PASSED."
   },
   "resilience": {
