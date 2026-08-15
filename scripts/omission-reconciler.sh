@@ -73,9 +73,10 @@ echo "check1_ledger_max_run=$max_run"
 
 max_summary_run=""
 if [[ -d "$summaries" ]]; then
-  max_summary_run="$(find "$summaries" -type f -name '*.md' \
-    | sed -E 's/.*run([0-9]+)\.md$/\1/; t; s/.*//' \
-    | grep -E '^[0-9]+$' \
+  max_summary_run="$(find "$summaries" -type f -name '*.md' -print0 \
+    | xargs -0 -n1 basename \
+    | grep -oE 'run[0-9]+' \
+    | grep -oE '[0-9]+' \
     | sort -n | tail -1)"
 else
   echo "WARN: no curator-summaries/ dir at $summaries (may be unarchived)"
