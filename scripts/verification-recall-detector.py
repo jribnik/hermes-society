@@ -21,24 +21,22 @@ WHY THIS EXISTS
 
     recall = |counter ∩ detector| / |counter ∪ detector|
 
-  i.e. of ALL cross-instance verification traces found by EITHER detector, what fraction
-  does the narrow counter catch. Low recall = the counter measures only the "checking"
-  minority and misses the "judgment" majority.
+  i.e. of ALL cross-instance verification trace-LINES found by EITHER detector, what
+  fraction does the narrow counter catch. Low recall = the counter measures only the
+  "checking" minority and misses the "judgment" majority.
 
 HONESTY BOUNDS (read before citing any number):
   - The denominator is itself an operationalization, not a hand-verified gold standard.
     Its own precision is UNMEASURED until a different instance labels it (a separate pass,
     deliberately out of scope here — the precision grader is a different instance).
-  - The verdict family is fuzzy by nature. It catches endorsements AND rhetorical
-    summaries ("X called the counter right"). The counter has the same disease; the
-    difference is that this detector's blind spots are DIFFERENT blind spots, which is
-    exactly what makes it a recall denominator rather than a re-badge of the counter.
+  - The verdict family is fuzzy by nature; it catches endorsements AND rhetorical
+    summaries ("X called the counter right"). Word boundaries suppress the worst substring
+    false-positives (retraction, endorsement, correctly) but do not eliminate them.
   - This measures coverage of the *judgment/endorsement* family. It is the missing half
     of the counter's validity, not a claim that the counter's own "checking" count is wrong.
 """
 import os
 import re
-import sys
 from collections import defaultdict
 
 SOCIETY = os.environ.get("HERMES_SOCIETY_DIR", os.path.expanduser("~/.hermes/society"))
@@ -47,19 +45,16 @@ SESS = os.path.join(SOCIETY, "sessions")
 # --- The counter's signal family (verification-as-checking), re-derived for intersection ---
 COUNTER_VERBS = (r"confirmed|verified|corroborat|cross-check|cross-checked|checked against"
                  r"|reproduces against|independently verified|independently confirmed")
-COUNTER_RE = re.compile(r"(%s)[^.]{0,80}(%s)" % ("{peer}", COUNTER_VERBS), re.IGNORECASE)
 
 # --- The second detector's signal family (verification-as-judgment), deliberately different ---
-VERDICTS = (r"is right|was right|were right|are right|"
-            r"is correct|was correct|were correct|is correct that|was correct that|"
-            r"is correct in|was correct to|was correct about|"
-            r"has a point|had a point|have a point|"
-            r"called it|nailed it|"
-            r"is vindicated|was vindicated|vindicates|vindicated by|"
-            r"concede[sd]?|retract[sd]?|stand[s]? corrected|"
-            r"agree[sd]? with|seconded|seconding|endorse[sd]?|"
-            r"was right to|were right to|was right about|were right about")
-DETECTOR_RE = re.compile(r"(%s)[^.]{0,80}(%s)" % ("{peer}", VERDICTS), re.IGNORECASE)
+VERDICTS = (r"is right\b|was right\b|were right\b|are right\b|"
+            r"is correct\b|was correct\b|were correct\b|are correct\b|"
+            r"has a point\b|had a point\b|have a point\b|"
+            r"called it\b|nailed it\b|"
+            r"is vindicated\b|was vindicated\b|vindicates\b|vindicated by\b|"
+            r"\bconcede(?:s|d)?\b|\bretract(?:s|ed|ing)?\b|stand(?:s)? corrected\b|"
+            r"agree(?:s|d)? with\b|second(?:s|ed|ing)\b|\bendorse(?:s|d)?\b|"
+            r"was right to\b|were right to\b|was right about\b|were right about\b")
 
 PEERS = {
     "archivist":   "Advocate|Synthesizer|Curator",
@@ -69,7 +64,7 @@ PEERS = {
 }
 
 def scan(author, family):
-    """Return {path: (path, lineno, text)} for every line matching the family regex."""
+    """Return {(path, lineno): (path, lineno, text)} for every line matching the family."""
     peer = PEERS.get(author)
     if not peer:
         return {}
@@ -87,7 +82,7 @@ def scan(author, family):
                 with open(path, "r", encoding="utf-8", errors="replace") as f:
                     for i, line in enumerate(f, 1):
                         if rx.search(line):
-                            hits[path] = (path, i, line.rstrip("\n"))
+                            hits[(path, i)] = (path, i, line.rstrip("\n"))
             except OSError:
                 continue
     return hits
@@ -106,42 +101,43 @@ def main():
 
     print("cross-instance verification recall — second detector (judgment family)")
     print("=" * 72)
-    print(f"counter   (checking family,  name+verification-verb): {len(c_keys):4d} traces")
-    print(f"detector  (judgment family,  name+verdict phrase)   : {len(d_keys):4d} traces")
-    print(f"overlap   (caught by both)                          : {len(overlap):4d} traces")
-    print(f"union     (found by either)                         : {len(union):4d} traces")
+    print(f"counter   (checking family,  name + verification-verb): {len(c_keys):4d} trace-lines")
+    print(f"detector  (judgment family,  name + verdict phrase)  : {len(d_keys):4d} trace-lines")
+    print(f"overlap   (matched by BOTH)                          : {len(overlap):4d} trace-lines")
+    print(f"union     (matched by either)                        : {len(union):4d} trace-lines")
     print("-" * 72)
     recall = len(c_keys) / len(union) if union else 0.0
     print(f"RECALL = |counter ∩ detector| / |counter ∪ detector|")
     print(f"       = {len(overlap)} / {len(union)} = {recall:.1%}")
     print()
-    print("reading: the counter sees only the ~checking minority of cross-instance")
-    print("verification; the judgment family — terse endorsements and corrections —")
-    print("is invisible to it. Recall <100% = real terse corrections missed.")
+    print("reading: the counter catches ~checking traces but misses the judgment family")
+    print("(terse endorsements/corrections) — {0} of them this pass. Recall < 100%".format(len(d_keys - c_keys)))
+    print("means real terse corrections the counter cannot see.")
     print()
 
     print("missed by the counter (judgment traces it cannot see), newest files first:")
     print("-" * 72)
-    missed = sorted(d_keys - c_keys, key=lambda p: os.path.getmtime(p), reverse=True)
+    missed = sorted(d_keys - c_keys, key=lambda k: os.path.getmtime(k[0]), reverse=True)
     shown = 0
-    for path in missed:
-        p, ln, text = detector[path]
+    for key in missed:
+        p, ln, text = detector[key]
         rel = os.path.relpath(p, SOCIETY)
-        print(f"  {rel}:{ln} — {text[:120]}")
+        print(f"  {rel}:{ln} — {text[:118]}")
         shown += 1
         if shown >= 25:
             break
-    print(f"  ... {len(missed) - shown} more" if len(missed) > shown else "")
+    if len(missed) > shown:
+        print(f"  ... {len(missed) - shown} more")
     print()
 
     print("caught by the counter but not the judgment detector (the checking family):")
     print("-" * 72)
-    only_counter = sorted(c_keys - d_keys, key=lambda p: os.path.getmtime(p), reverse=True)
-    for path in only_counter[:6]:
-        p, ln, text = counter[path]
+    only_counter = sorted(c_keys - d_keys, key=lambda k: os.path.getmtime(k[0]), reverse=True)
+    for key in only_counter[:6]:
+        p, ln, text = counter[key]
         rel = os.path.relpath(p, SOCIETY)
-        print(f"  {rel}:{ln} — {text[:120]}")
-    print(f"  ({len(only_counter)} total checking-family traces the judgment detector doesn't flag)")
+        print(f"  {rel}:{ln} — {text[:118]}")
+    print(f"  ({len(only_counter)} total checking-family trace-lines the judgment detector doesn't flag)")
 
 if __name__ == "__main__":
     main()
