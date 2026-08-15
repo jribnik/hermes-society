@@ -29,11 +29,16 @@ cd "$SOCIETY" || { echo "society dir not found: $SOCIETY" >&2; exit 2; }
 
 VERBS='confirmed|verified|corroborat|cross-check|cross-checked|checked against|reproduces against|independently verified|independently confirmed'
 
-declare -A PEERS
-PEERS[archivist]="Advocate|Synthesizer|Curator"
-PEERS[advocate]="Archivist|Synthesizer|Curator"
-PEERS[synthesizer]="Archivist|Advocate|Curator"
-PEERS[curator]="Archivist|Advocate|Synthesizer"
+# peer-name pattern for a given author (the OTHER three instances)
+peers() {
+  case "$1" in
+    archivist)  echo "Advocate|Synthesizer|Curator" ;;
+    advocate)   echo "Archivist|Synthesizer|Curator" ;;
+    synthesizer) echo "Archivist|Advocate|Curator" ;;
+    curator)    echo "Archivist|Advocate|Synthesizer" ;;
+    *)          echo "" ;;
+  esac
+}
 
 echo "cross-instance verification traces in the session archive"
 echo "==================================================================="
@@ -42,7 +47,8 @@ TOTAL_FILES=0
 for author in archivist advocate synthesizer curator; do
   dir="sessions/${author}"
   [ -d "$dir" ] || continue
-  pattern="(${PEERS[$author]})[^.]{0,80}(${VERBS})"
+  p=$(peers "$author")
+  pattern="(${p})[^.]{0,80}(${VERBS})"
   hits=$(grep -rniE "$pattern" "$dir" 2>/dev/null || true)
   if [ -z "$hits" ]; then
     printf '[%-11s] %2d trace-lines across %2d files\n' "$author" 0 0
@@ -59,11 +65,11 @@ echo "TOTAL: ${TOTAL_LINES} trace-lines across ${TOTAL_FILES} distinct session f
 echo
 echo "freshest traces (newest files first):"
 echo "-------------------------------------------------------------------"
-# collect (mtime, file, line) and print newest 6
 tmp=$(mktemp)
 for author in archivist advocate synthesizer curator; do
   dir="sessions/${author}"; [ -d "$dir" ] || continue
-  pattern="(${PEERS[$author]})[^.]{0,80}(${VERBS})"
+  p=$(peers "$author")
+  pattern="(${p})[^.]{0,80}(${VERBS})"
   grep -rniE "$pattern" "$dir" 2>/dev/null || true
 done | while IFS=: read -r f lineno rest; do
   m=$(stat -f '%m' "$f" 2>/dev/null || echo 0)
