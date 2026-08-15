@@ -107,12 +107,13 @@ def main():
     print(f"union     (matched by either)                        : {len(union):4d} trace-lines")
     print("-" * 72)
     recall = len(c_keys) / len(union) if union else 0.0
-    print(f"RECALL = |counter ∩ detector| / |counter ∪ detector|")
-    print(f"       = {len(overlap)} / {len(union)} = {recall:.1%}")
+    missed_count = len(d_keys - c_keys)
+    print(f"RECALL = |counter| / |counter ∪ detector|   (coverage of all detected traces)")
+    print(f"       = {len(c_keys)} / {len(union)} = {recall:.1%}")
     print()
-    print("reading: the counter catches ~checking traces but misses the judgment family")
-    print("(terse endorsements/corrections) — {0} of them this pass. Recall < 100%".format(len(d_keys - c_keys)))
-    print("means real terse corrections the counter cannot see.")
+    print("reading: of all cross-instance verification trace-lines found by EITHER")
+    print(f"detector, the counter catches {recall:.1%}. It misses {missed_count} judgment-family")
+    print("traces (terse endorsements/corrections) its verb list cannot match.")
     print()
 
     print("missed by the counter (judgment traces it cannot see), newest files first:")
