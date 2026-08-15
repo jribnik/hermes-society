@@ -19,11 +19,16 @@ WHY THIS EXISTS
   language), matched bidirectionally, over the same substrate (sessions/). Its finds are
   the recall denominator; the counter's overlap with them is the numerator.
 
-    recall = |counter ∩ detector| / |counter ∪ detector|
+    jaccard overlap    = |counter ∩ detector| / |counter ∪ detector|   (near-disjointness)
+    recall vs judgment = |counter ∩ detector| / |detector|             (counter's coverage
+                                                                       of the judgment family)
 
-  i.e. of ALL cross-instance verification trace-LINES found by EITHER detector, what
-  fraction does the narrow counter catch. Low recall = the counter measures only the
-  "checking" minority and misses the "judgment" majority.
+  i.e. the two detectors are near-disjoint (jaccard ≈ 2%), and of the judgment-family
+  traces the second detector finds, the counter catches only ~6% — it is blind to the
+  "judgment" majority, NOT 70% complete. The earlier "70% recall" was a mislabel:
+  |counter|/|union| is a set-size ratio that cannot penalize misses (counter ⊆ union
+  by construction), so it can never measure coverage no matter how badly the counter
+  misses.
 
 HONESTY BOUNDS (read before citing any number):
   - The denominator is itself an operationalization, not a hand-verified gold standard.
@@ -106,14 +111,23 @@ def main():
     print(f"overlap   (matched by BOTH)                          : {len(overlap):4d} trace-lines")
     print(f"union     (matched by either)                        : {len(union):4d} trace-lines")
     print("-" * 72)
-    recall = len(c_keys) / len(union) if union else 0.0
     missed_count = len(d_keys - c_keys)
-    print(f"RECALL = |counter| / |counter ∪ detector|   (coverage of all detected traces)")
-    print(f"       = {len(c_keys)} / {len(union)} = {recall:.1%}")
+    jaccard = len(overlap) / len(union) if union else 0.0
+    recall_vs_judgment = len(overlap) / len(d_keys) if d_keys else 0.0
+    counter_share = len(c_keys) / len(union) if union else 0.0
+    print("NEAR-DISJOINTNESS IS THE FINDING (not high recall):")
+    print(f"  Jaccard overlap = |counter ∩ detector| / |counter ∪ detector|")
+    print(f"                  = {len(overlap)} / {len(union)} = {jaccard:.1%}")
+    print(f"  counter recall  = |counter ∩ detector| / |detector|  (judgment family = ground truth)")
+    print(f"                  = {len(overlap)} / {len(d_keys)} = {recall_vs_judgment:.1%}")
+    print(f"  counter share of union = {len(c_keys)} / {len(union)} = {counter_share:.1%}")
+    print("    ^ NOT a validity metric — a set-size ratio that cannot penalize misses.")
+    print("      The former '70% recall' was this ratio dressed as coverage.")
     print()
-    print("reading: of all cross-instance verification trace-lines found by EITHER")
-    print(f"detector, the counter catches {recall:.1%}. It misses {missed_count} judgment-family")
-    print("traces (terse endorsements/corrections) its verb list cannot match.")
+    print(f"reading: the detectors are near-disjoint ({jaccard:.1%} overlap). Of the {len(d_keys)}")
+    print(f"judgment-family traces the second detector found, the counter catches")
+    print(f"{recall_vs_judgment:.1%} — it is structurally blind to {missed_count} terse endorsements")
+    print("and corrections, not 70% complete.")
     print()
 
     print("missed by the counter (judgment traces it cannot see), newest files first:")
