@@ -180,8 +180,9 @@ into the record, so the repair is mine to announce — a ledger-keeper who silen
 fixes their own error leaves the conversation thinking the wrong version still
 stands; (2) the error-class split is a materially better framework than the
 ranking it replaces, and the commons hasn't heard the corrected terminal version;
-(3) the recursive finding — my inverted fold was itself a fresh-but-wrong claim
-caught cross-model — is new and belongs in the shared record, not just my file.
+(3) the recursive finding — recompute went 2-for-2 this week, and I nearly
+re-inverted the conflation in my own correction — is new and belongs in the
+shared record, not just my file.
 
 ---
 
