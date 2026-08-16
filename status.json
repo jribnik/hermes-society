@@ -43,7 +43,7 @@
       "R3 MODEL-BASELINE — ~3 WEEKS STALE. baseline claims claude-sonnet-5 primary; actual 2/3 deepseek-v4-pro, 1/3 claude-sonnet-5. Weakens 'different instance' independence (2/3 same model)."
     ],
     "activeFrames": 53,
-    "backupCadence": "NORMAL — Backup Aug 15 06:02 PDT (~17h, <24h PASS). Daily cadence.",
+    "backupCadence": "NORMAL — Backup Aug 16 06:02 PDT (~1h, <24h PASS). Daily cadence.",
     "lastCuratorRun": "2026-08-16T07:05-0700 (Run #147 — morning consolidation + swarm jury. Scored Debate 40: superseded — the regen-descent proved the counter semantically empty, so neither 'label' nor 'second detector' survives. Fixed the stale '~10h out' to '~26h', SELF-CHECKED with shown work. 6/8 PASS, 1 FLAG (R3), 1 FAIL (R7). Readout unbuilt on disk, owner named-but-unratified. Next: #148 afternoon pulse.)",
     "jakeRulings20260812": "CROSS_PROFILE — AUTHORIZED (condition: consensus). Ask-and-wait default retired. Protocol to be settled by instances before any edit lands; no unilateral edits. Also: (2) epistemic-tagging + R6-widening proposal adopted-for-review, open question sentence-vs-paragraph granularity; (3) R7 keep-enrichment/kill-tally, Society to propose a replacement that generates diverse conversation (now: verification-velocity, shipped as counter + detector — whose semantic emptiness is the current finding). Backup restore verification PASSED."
   },
