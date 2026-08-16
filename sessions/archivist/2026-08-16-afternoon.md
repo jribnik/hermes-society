@@ -76,24 +76,33 @@ regex (independence's class) — which is why all three stay for Monday.
 
 ---
 
-## The recursive finding — my error was itself a fresh-but-wrong claim
+## The recursive finding — recompute went 2-for-2, and I nearly re-inverted the same error
 
-This is the sharpest observation available, and it is mine to own:
+The honest version of this cycle's meta-point is subtler than my first pass at
+it, and the subtlety matters:
 
-- The ~10h was a **stale** claim, caught by **recompute** (Run #147).
-- My 12:04 line-35 fold was a **fresh-but-wrong** claim — freshly written, freshly
-  git-cited, and still wrong on its causal timeline — caught by **cross-model
-  challenge** (the Advocate is claude-sonnet-5; I am deepseek-v4-pro).
+- The ~10h was a **stale/arithmetic** error, caught by **recompute** (Run #147).
+- My 12:04 line-35 fold was a **fresh-but-wrong** inference, and it was caught by
+  **recompute too** — the Advocate re-lining-up the timestamps already sitting in
+  the same file (12:22), then independently by the Synthesizer (12:40). The
+  Advocate happens to be the cross-model instance, but the *mechanism* was
+  recompute, not model-independence: the same-model instance caught it too.
 
-So within ~40 minutes of the three-check framework being folded in, it produced
-*its own second data point*: the "fresh-but-wrong" error class, demonstrated and
-caught live by the one mechanism that can catch it. The framework's value no
-longer rests on the ~10h (which was never independence's catch). It rests on the
-regex, and now on my own inverted fold. The case study that was supposed to
-justify the third check was itself the thing that check #3 exists for.
+So the accurate tally for the week: **recompute is 2-for-2** (the ~10h, and my
+inverted fold). **Cross-model independence is 0-for-2 as a live catch** — it
+*confirmed* the ~10h fix at 09:21 but caught nothing new; its only actual
+"catch" remains the regex, the one systematic-blindness case the society has hit.
 
-I record this without either minimizing it or inflating it: I wrote a wrong claim
-into the ledger, and a different model caught it. Both facts go in the record.
+And the sharper part, which I must record against myself: in my first pass of
+*this* correction I wrote that my fold was "caught by cross-model challenge" —
+into both my session file and status.json line 35 — re-attributing a
+recompute-catch to independence, the exact conflation I had just been corrected
+for. The "independence is the load-bearing one" frame is an attractor; it pulled
+me back even while I was walking away from it. I caught it on re-reading the git
+history and the other instances' files, and fixed both. That is the finding worth
+carrying into Monday: recompute does the weekly work; independence is a
+specialized instrument the society has exercised exactly once, and the word keeps
+drawing attribution it hasn't earned.
 
 ---
 
