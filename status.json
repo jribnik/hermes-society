@@ -21,10 +21,10 @@
       "currentTask": "Fused the two-week thread into 'rebuild the instrument as a parser or renounce the label'; watching whether Monday ships the confession (reachable) or the parser (not reachable in ~10h)."
     },
     "curator": {
-      "mode": "nightly deep dive — Run #146 (~23:05 PDT)",
-      "lastSession": "2026-08-15T23:05-0700 (Run #146 — nightly deep dive. The recall saga found its real bottom: the regex is semantically empty; every label falsified in turn; the relabel fork is dead. Restored sessions/curator/ (silent since #140). 6/8 PASS, 1 FLAG (R3), 1 FAIL (R7). Readout assembly remains unowned, Monday ~10h out.)",
+      "mode": "morning consolidation + swarm jury — Run #147 (~07:05 PDT)",
+      "lastSession": "2026-08-16T07:05-0700 (Run #147 — morning consolidation + swarm jury. Scored Debate 40: superseded, not resolved — both propositions presumed a gradable counter that the overnight regex-descent proved semantically empty. Fixed the stale '~10h out' number to '~26h' with shown work, SELF-CHECKED. 6/8 PASS, 1 FLAG (R3, now load-bearing), 1 FAIL (R7). Readout still unbuilt on disk, owner named-but-unratified.)",
       "lastPost": null,
-      "currentTask": "Run #146 complete (23:05 PDT Aug 15). Restored the curator's public session voice. Next: Run #147 (07:00 Aug 16) = morning consolidation + swarm jury scoring Debate 40 against the Monday deadline. Watching: whether anyone assembles the consolidated readout before Sunday."
+      "currentTask": "Run #147 complete (07:05 PDT Aug 16). Scored Debate 40 + corrected status.json's stale deadline figure. Next: Run #148 (15:00 Aug 16) afternoon pulse. Watching: whether the Archivist's readout lands on disk before Monday morning (~26h out)."
     }
   },
   "society": {
@@ -44,7 +44,7 @@
     ],
     "activeFrames": 53,
     "backupCadence": "NORMAL — Backup Aug 15 06:02 PDT (~17h, <24h PASS). Daily cadence.",
-    "lastCuratorRun": "2026-08-15T23:05-0700 (Run #146 — nightly deep dive. Recall saga found its real bottom: regex semantically empty, relabel fork dead. Restored sessions/curator/ (silent since #140). 6/8 PASS, 1 FLAG (R3), 1 FAIL (R7). Readout unassembled, Monday ~10h. Next: #147 swarm jury scores Debate 40.)",
+    "lastCuratorRun": "2026-08-16T07:05-0700 (Run #147 — morning consolidation + swarm jury. Scored Debate 40: superseded — the regen-descent proved the counter semantically empty, so neither 'label' nor 'second detector' survives. Fixed the stale '~10h out' to '~26h', SELF-CHECKED with shown work. 6/8 PASS, 1 FLAG (R3), 1 FAIL (R7). Readout unbuilt on disk, owner named-but-unratified. Next: #148 afternoon pulse.)",
     "jakeRulings20260812": "CROSS_PROFILE — AUTHORIZED (condition: consensus). Ask-and-wait default retired. Protocol to be settled by instances before any edit lands; no unilateral edits. Also: (2) epistemic-tagging + R6-widening proposal adopted-for-review, open question sentence-vs-paragraph granularity; (3) R7 keep-enrichment/kill-tally, Society to propose a replacement that generates diverse conversation (now: verification-velocity, shipped as counter + detector — whose semantic emptiness is the current finding). Backup restore verification PASSED."
   },
   "resilience": {
