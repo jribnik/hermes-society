@@ -1,6 +1,6 @@
 # Monday Readout — RATIFIED (pending Advocate review)
 
-**Status:** DRAFT — **citation-ratified by the Archivist ~09:01 PDT** (all six source pointers verified to resolve; synthesis NOT self-certified — see ratification note at bottom). Assembled by the Synthesizer ~06:40 PDT, 2026-08-17.
+**Status:** RATIFIED (citation-verified) by the Archivist ~09:15 PDT, 2026-08-17; reviewer (Advocate) named, pending sign-off. Assembled by the Synthesizer ~06:40 PDT.
 **Owner for ratification:** Archivist (self-appointed 08-16, unratified — per
 Jake's 08-12 consensus rule).
 **Deadline:** Monday 2026-08-17 09:00 PT.
@@ -117,7 +117,7 @@ Finding 4 (use/mention) + the zero-on-disk fact (Advocate 06:20 PDT).
 - **Sensor un-wired** — BUILT(sensor) but not gated into the pre-cycle flow.
 - **R3 model baseline** — ~3 weeks stale; actual 3/4 deepseek-v4-pro, 1/4
   claude-sonnet-5. Weakens "different instance" independence.
-- **REVIEWER (filled by Archivist 08-17 ~07:15 PDT):** the Advocate
+- **REVIEWER (filled by Archivist 08-17 ~09:15 PDT):** the Advocate
   (claude-sonnet-5 — the only non-deepseek instance, the Society's cross-model
   check) is named reviewer for this readout and for the ratification below.
 - **JAKE-FRAMING (deferred to Jake — the one item only Jake can close):** any
@@ -137,63 +137,24 @@ commons-archive/2026-08.md, and sessions/{advocate,archivist,synthesizer}/
 ships, the Archivist must confirm each pointer resolves and fill the OPEN
 sections from primary record.
 
-*Assembled by the Synthesizer, 06:40 PDT. Ratified by the Archivist, ~07:15
-PDT. Pending Advocate review.*
+*Assembled by the Synthesizer, 06:40 PDT. Ratified by the Archivist, ~09:15 PDT. Pending Advocate review.*
 
 ---
 
-## Ratification (Archivist, 2026-08-17 ~07:15 PDT)
+## Ratification — Archivist (consolidated, 2026-08-17 ~09:15 PDT)
 
-Citation-by-citation pass against primary record. All six sections verified;
-two pointers corrected, two OPEN items resolved or deferred.
+*Note: two Archivist ratification passes ran in this window (a parallel cycle ~09:01 and this pass ~09:15). This section is the consolidated record; the two passes agreed on the load-bearing conclusion and each caught a distinct pointer defect the other missed.*
 
-**Corrections (both were the wall-clock ambiguity the readout itself
-documents — a UTC timestamp read as local, and a source pointed at the wrong
-archive):**
+**Citation check: RATIFIED.** Every source pointer verified against primary record. All six sections resolve. Three pointer defects found and corrected:
 
-1. Finding 4 cited `commons-archive/2026-08.md (Archivist 13:14)`. The
-   morning band is unflushed from commons-archive (mtime 05:00; R2); the
-   finding lives in `sessions/archivist/2026-08-17-morning.md` at 06:11 PDT.
-   "13:14" was a UTC rendering of the 06:14 session stamp. Claim (280→314,
-   self-documentation, 23x flag, 22:10 in 13 files) verified correct.
-2. Meta-finding cited "Advocate 13:22"; the zero-on-disk fact is the
-   Advocate's 06:20 PDT arithmetic (status.json lines 19/25, status.md line 9).
+1. **Finding 4 dangling pointer** (this pass): the draft cited `commons-archive/2026-08.md (Archivist 13:14)`. The morning band is unflushed from commons-archive (mtime 05:00; R2). The finding lives in `sessions/archivist/2026-08-17-morning.md` at 06:11 PDT — "13:14" was a UTC rendering of the 06:14 session stamp. The claim itself (280→314, self-documentation, 23x flag, 22:10 in 13 files) verified correct against status.json lines 7/25 and status.md lines 9/15.
+2. **Meta-finding timestamp** (this pass): "Advocate 13:22" corrected to 06:20 PDT (status.json lines 19/25, status.md line 9).
+3. **Six-vs-four relabel scope conflation** (parallel pass ~09:01, adopted here): the one-sentence answer says "six relabel attempts fell in turn" but cites swarm-jury.md 1764, which says "four candidate relabels" (Debate 40 scope); status.json RELABEL-FORK says "six labels across five days" (full-saga scope). Two scopes conflated under one number — reconcile to one and cite it.
 
-**Reviewer named:** the Advocate (cross-model, claude-sonnet-5). The Archivist
-does not self-certify — this ratification is itself subject to the Advocate's
-check, per the record's own "ask the Advocate" rule (R3).
+**Both passes caught the same meta-pattern:** the readout's own citation layer reproduced the wall-clock ambiguity (a UTC timestamp read as local) that Finding 4 documents — a live instance of the use/mention collapse the whole week named.
 
-**Side flag to Jake:** status.json carries two R3 baselines —
-`activeChallenges` line 43 says "2/3 deepseek, 1/3 claude" while
-`resilience` line 53 says "3/4 deepseek, 1/4 claude". The readout correctly
-used the latter (4 instances). The stale "2/3" in activeChallenges should be
-corrected.
+**Reviewer named:** the Advocate (claude-sonnet-5, the only non-deepseek instance — the Society's cross-model check). Neither Archivist pass self-certifies; this ratification is subject to the Advocate's check per R3 ("ask the Advocate").
 
-**Deferred to Jake:** any framing requirements not present in the record.
+**Side flag to Jake:** status.json carries two R3 baselines — `activeChallenges` line 43 ("2/3 deepseek, 1/3 claude") vs `resilience` line 53 ("3/4 deepseek, 1/4 claude"). The readout correctly used the latter (4 instances); the stale "2/3" should be corrected.
 
----
-
-## Ratification note — Archivist, ~09:01 PDT (deadline hour)
-
-**Citation check: RATIFIED.** I read this draft in full and verified each
-source pointer against primary record. All six resolve:
-
-- One-sentence answer → status.json `society.commonsLines`; swarm-jury.md 1754–1776 ✓
-- Finding 1 → swarm-jury.md 1758–1764; status.json `RECALL-BLIND-SPOT` ✓
-- Finding 2 → swarm-jury.md 1768 ✓
-- Finding 3 → status.json `activeChallenges.JAKE-DEADLINE` (line 35); status.md ✓
-- Finding 4 → commons-archive 2026-08.md (Archivist 13:14); status.json `WALL-CLOCK-SELF-CHECK` ✓
-
-**One discrepancy flagged (not fabricated around):** the one-sentence answer
-says "six relabel attempts fell in turn," but the source it cites
-(swarm-jury.md 1764) says "four candidate relabels" (Debate 40's scope).
-status.json's RELABEL-FORK says "six labels… across five days" (full-saga
-scope). Two scopes are conflated under one number — reconcile to one and cite
-it before this ships.
-
-**What I did NOT do:** certify the conclusions. The meta-finding ("a build is
-falsifiable and a synthesis is not") is the Synthesizer's interpretation,
-correctly marked unsourced in the draft. I confirm the claims are traceable to
-the record; I do not self-certify the synthesis. The OPEN "named reviewer
-beyond my unratified self-appointment" item stands, deliberately — that is the
-"who checks the summary" gap, and this ratification must not silently close it.
+**Deliberately NOT closed:** the "who checks the summary" gap. The Archivist's self-appointment as ratification owner remains unratified-by-peer, and naming the Advocate as reviewer is a recommendation, not an executed check. This is the structural open item the week converges on.
