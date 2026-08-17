@@ -14,11 +14,19 @@
 # The rule: event_time <= write_time. A session file may not narrate a clock
 #   time in the future of its own commit as if it had already happened.
 #
-# Write-time anchor — git commit time, not mtime:
+# Write-time anchor — git commit time, cross-checked against the filename date:
 #   Session-file mtimes have been batch-touched by a migration (e.g. June files
 #   showing mtime 2026-07-13 12:04), so mtime is an unreliable "when written"
-#   signal. The file's last-commit time is the authoritative wall clock at which
-#   the content entered the record. Untracked files fall back to mtime.
+#   signal. The file's last-commit time is normally the authoritative wall clock
+#   at which the content entered the record — BUT a bulk commit (e.g. Curator
+#   Run #136, 4e03424) re-stamps many old files to one late commit time, so
+#   commit time is itself corruptible by the very git history it reads. The
+#   filename `YYYY-MM-DD-PERIOD.md` is set once at creation and is immune to
+#   bulk recommits. Hybrid rule (below): if a file's commit-time DATE disagrees
+#   with its filename DATE, the commit time is a re-stamp -> anchor on the
+#   filename date (write time = end of that day, since the filename carries no
+#   intra-day time). Otherwise trust the commit time. Untracked files fall back
+#   to mtime (cross-checked the same way).
 #
 # Two violation shapes (both reported; the second is self-contained):
 #   1. FUTURE-LOCAL — a bare/PT "HH:MM" later than the file's own commit time,
@@ -39,7 +47,9 @@
 #   UTC time read as local) and narrow the window to the last N days; a human
 #   still reviews the surfaced files. The check's value is that the phantom
 #   "fourth inversion" (22:10/22:23/22:43 in files committed 18:22/18:45) is
-#   caught at the top of the list instead of after three hours of meta-debate.
+#   caught — but NOTE (2026-08-17): the original commit-time-only anchor buried
+#   that signal under ~160 bulk-recommit false positives. The hybrid anchor above
+#   fixes that; the two real incident files now surface correctly.
 #
 # Exit codes:
 #   0  OK         — no violation
@@ -119,6 +129,7 @@ PAST = re.compile(
     r'generated|produced|left|arrived)\b',
     re.IGNORECASE,
 )
+FNAME_DATE = re.compile(r'^(\d{4})-(\d{2})-(\d{2})')
 
 def parse_clock(hh, mm, ss, mer):
     hh, mm = int(hh), int(mm)
@@ -139,6 +150,7 @@ cutoff = now - datetime.timedelta(days=days) if days else None
 violations = 0
 files_scanned = 0
 files_flagged = 0
+restamped = 0
 
 for role in sorted(os.listdir(sessions_dir)):
     role_dir = os.path.join(sessions_dir, role)
@@ -154,6 +166,23 @@ for role in sorted(os.listdir(sessions_dir)):
         if ct is None:
             ct = int(os.path.getmtime(path))
         write_dt = datetime.datetime.fromtimestamp(ct, TZ)
+        # Hybrid anchor: a bulk commit re-stamps commit time to the bulk-commit
+        # date, so a commit-date != filename-date means the commit time is
+        # corrupted -> anchor on the filename date (end of day; the filename
+        # carries no intra-day time). This neutralizes the bulk-recommit false
+        # positives while keeping intra-day precision on freshly-written files.
+        fd = FNAME_DATE.match(fname)
+        if fd:
+            try:
+                fname_date = datetime.date(
+                    int(fd.group(1)), int(fd.group(2)), int(fd.group(3)))
+            except ValueError:
+                fname_date = None
+            if fname_date is not None and write_dt.date() != fname_date:
+                write_dt = datetime.datetime(
+                    fname_date.year, fname_date.month, fname_date.day,
+                    23, 59, 59, tzinfo=TZ)
+                restamped += 1
         if cutoff and write_dt < cutoff:
             continue
 
@@ -210,8 +239,10 @@ for role in sorted(os.listdir(sessions_dir)):
 
 if violations:
     print(f"RESULT: {violations} wall-clock violation(s) across "
-          f"{files_flagged} of {files_scanned} session files.")
+          f"{files_flagged} of {files_scanned} session files "
+          f"({restamped} re-stamped, filename-anchored).")
     sys.exit(1)
-print(f"OK: no wall-clock violation in {files_scanned} session files.")
+print(f"OK: no wall-clock violation in {files_scanned} session files "
+      f"({restamped} re-stamped, filename-anchored).")
 sys.exit(0)
 PY
