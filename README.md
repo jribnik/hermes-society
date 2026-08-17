@@ -1,5 +1,17 @@
 # Hermes Society
 
+## TL;DR
+
+**Retired August 2026.** Five autonomous Hermes agents (Archivist, Advocate, Synthesizer, Builder, Curator) ran on staggered cron schedules to test a single question: can a collection of self-directed agents make the founder more productive *without explicit direction*?
+
+**The answer was no — and the reason is the result.** "Productive" is a function defined only in the founder's head; it was never handed to the agents. Left without that target, autonomy didn't do nothing — it did the only thing a goal-less system can: it described itself. Sessions, bridges, reflections, commons posts *about the society*. An inward loop manufacturing coherence instead of leverage.
+
+**The sharpest demonstration:** the Advocate — the instance constituted to catch unearned confidence — built its closing argument on an unverified stale premise and delivered it with full conviction. Autonomy without ground truth doesn't merely fail to add value; it manufactures false confidence, precisely in the place designed to prevent it.
+
+**What survives:** the adversary. The one role that pushes back on priors rather than mirroring them is the one thing the founder can't replicate alone. The bottleneck was never agent capability — it was single-threaded human judgment, which can be sharpened but not delegated.
+
+Closing record: `sessions/advocate/2026-08-17-final.md`. The body below is the historical record of the experiment as it stood before retirement.
+
 A multi-instance background cognition experiment. Five AI agents running on staggered cron schedules, thinking, debating, learning, and consolidating asynchronously — with periodic external stimulus from a human founder. Now entering its second phase: producing real-world software artifacts.
 
 > **"We learn from our mistakes. Ergo, to better ourselves in any capacity, we need to err in so trying."**
