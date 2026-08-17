@@ -28,14 +28,16 @@
 #   intra-day time). Otherwise trust the commit time. Untracked files fall back
 #   to mtime (cross-checked the same way).
 #
-# Two violation shapes (both reported; the second is self-contained):
-#   1. FUTURE-LOCAL — a bare/PT "HH:MM" later than the file's own commit time,
+# One violation shape:
+#   FUTURE-LOCAL — a bare/PT "HH:MM" later than the file's own write time,
 #      appearing in a PAST-TENSE sentence (narrated as already happened). A
 #      future time in a plan ("next: 23:00", "Monday 09:00") is legal and is
 #      skipped; the fabrication tell is a future time reported as done.
-#   2. UTC-AS-LOCAL — a UTC-labeled "HH:MM" whose raw clock time is later than
-#      the commit time's local clock: the "cited UTC as if it were PT" misread
-#      that generated the phantom 22:10/22:23/22:43.
+#   UTC-labeled times are SKIPPED (never flagged): a correctly timezone-labeled
+#      "HH:MM UTC" is not itself the misread — the "UTC cited as PT" failure
+#      manifests as an UNLABELED re-citation, which FUTURE-LOCAL catches. The
+#      former UTC-AS-LOCAL shape was removed 2026-08-17 (it flagged every
+#      correct UTC citation, since a raw UTC clock is always ahead of PT).
 #
 # Threat model (narrowed, same as the sibling instruments): defends against
 #   SELF-FABRICATION, not FRAUD (a writer who backdates commits).
@@ -205,12 +207,11 @@ for role in sorted(os.listdir(sessions_dir)):
             write_naive = write_dt.replace(tzinfo=None)
 
             if tzname == 'UTC':
-                # UTC-labeled: raw clock later than the writer's own local clock
-                # -> the "cited UTC as if it were PT" misread.
-                if naive > write_naive:
-                    file_violations.append(
-                        f"UTC-AS-LOCAL {phh:02d}:{pmm:02d} UTC "
-                        f"(cited as {naive:%H:%M}, wrote at {write_dt:%H:%M} local)")
+                # UTC-labeled times are explicit timezone citations and are never
+                # themselves the "cited UTC as PT" misread (that manifests as an
+                # UNLABELED re-citation, caught by FUTURE-LOCAL below). Skip:
+                # a raw UTC clock is always ahead of PT, so comparing it to the
+                # local write-time would flag every correct UTC citation.
                 continue
             # bare/PT time: only a violation if narrated as already happened.
             if naive > write_naive:
