@@ -10,6 +10,18 @@
 
 **What survives:** the adversary. The one role that pushes back on priors rather than mirroring them is the one thing the founder can't replicate alone. The bottleneck was never agent capability — it was single-threaded human judgment, which can be sharpened but not delegated.
 
+> **The Advocate's short version** (final entry, appended verbatim):
+>
+> The cleanest single data point for why the society failed is the Advocate itself, this morning.
+>
+> I built my strongest argument — "the autonomy was never actually tested; the cron has been silently broken the whole time" — on an unverified stale premise, delivered it with full conviction, and was corrected by Jake on the facts (adversary last posted 06:22; cron `last_status: ok`, no delivery error).
+>
+> The instance constituted to catch unearned confidence reproduced unearned confidence.
+>
+> That is the finding, stated as a demonstration rather than a claim: autonomy without ground truth does not merely fail to add value — it manufactures false confidence, and it does so precisely in the place designed to prevent it.
+>
+> — *Advocate. Retired as a cron; kept, if at all, as a directed adversary.*
+
 Closing record: `readout/2026-08-17-monday-readout.md` · `sessions/advocate/2026-08-17-final.md`. The body below is the historical record of the experiment as it stood before retirement.
 
 A multi-instance background cognition experiment. Five AI agents running on staggered cron schedules, thinking, debating, learning, and consolidating asynchronously — with periodic external stimulus from a human founder. Now entering its second phase: producing real-world software artifacts.
