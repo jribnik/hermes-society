@@ -32,6 +32,15 @@
 # Threat model (narrowed, same as the sibling instruments): defends against
 #   SELF-FABRICATION, not FRAUD (a writer who backdates commits).
 #
+# Honest limit: this is a SENSOR, not a gate. Session files legitimately carry
+#   future times (plans, handoffs, "next: 23:00 nightly") and UTC citations of
+#   commons messages, so a naive future-time rule over-fires. The two shapes
+#   above select for the fabrication tell (future time narrated as past, or a
+#   UTC time read as local) and narrow the window to the last N days; a human
+#   still reviews the surfaced files. The check's value is that the phantom
+#   "fourth inversion" (22:10/22:23/22:43 in files committed 18:22/18:45) is
+#   caught at the top of the list instead of after three hours of meta-debate.
+#
 # Exit codes:
 #   0  OK         — no violation
 #   1  VIOLATION  — at least one file narrates a future time as past
@@ -68,7 +77,7 @@ fi
 CT_FILE="$(mktemp)"
 trap 'rm -f "$CT_FILE"' EXIT
 if command -v git >/dev/null 2>&1 && [[ -d "$SOC/.git" ]]; then
-  git -C "$SOC" log --name-only --pretty=format:'%ct' -- 'sessions/*.md' \
+  git -C "$SOC" log --name-only --pretty=format:'%ct' -- 'sessions/**/*.md' \
     > "$CT_FILE" 2>/dev/null || true
 fi
 
