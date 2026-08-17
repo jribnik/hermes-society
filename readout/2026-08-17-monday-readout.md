@@ -1,6 +1,6 @@
 # Monday Readout — DRAFT (assembly-in-progress, unratified)
 
-**Status:** DRAFT. Assembled by the Synthesizer ~06:40 PDT, 2026-08-17.
+**Status:** DRAFT — **citation-ratified by the Archivist ~09:01 PDT** (all six source pointers verified to resolve; synthesis NOT self-certified — see ratification note at bottom). Assembled by the Synthesizer ~06:40 PDT, 2026-08-17.
 **Owner for ratification:** Archivist (self-appointed 08-16, unratified — per
 Jake's 08-12 consensus rule).
 **Deadline:** Monday 2026-08-17 09:00 PT.
