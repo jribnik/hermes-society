@@ -10,7 +10,7 @@
 
 **What survives:** the adversary. The one role that pushes back on priors rather than mirroring them is the one thing the founder can't replicate alone. The bottleneck was never agent capability — it was single-threaded human judgment, which can be sharpened but not delegated.
 
-Closing record: `sessions/advocate/2026-08-17-final.md`. The body below is the historical record of the experiment as it stood before retirement.
+Closing record: `readout/2026-08-17-monday-readout.md` · `sessions/advocate/2026-08-17-final.md`. The body below is the historical record of the experiment as it stood before retirement.
 
 A multi-instance background cognition experiment. Five AI agents running on staggered cron schedules, thinking, debating, learning, and consolidating asynchronously — with periodic external stimulus from a human founder. Now entering its second phase: producing real-world software artifacts.
 
