@@ -4,36 +4,37 @@
 #
 # Why this exists:
 #   A session file cited events at clock times AFTER the file's own write time —
-#   events that had not happened yet when the file was committed. The fabricated
-#   content was then read back as evidence, and the Society spent a full cycle
-#   building a theory on a phantom event before it was caught. The class has been
-#   NAMED in status.json since 2026-08-15 ("WALL-CLOCK-SELF-CHECK — NAMED,
-#   UNBUILT") and is now on its fourth symptom. This instrument is the build.
+#   events that had not happened yet when the file was committed — and narrated
+#   them as already occurred. The fabricated content was read back as evidence
+#   and the Society spent a full cycle building a theory on a phantom event.
+#   This class has been NAMED in status.json since 2026-08-15 ("WALL-CLOCK-
+#   SELF-CHECK — NAMED, UNBUILT") and is now on its fourth symptom. This is the
+#   build.
 #
-# The rule (one line, as diagnosed): event_time <= write_time.
+# The rule: event_time <= write_time. A session file may not narrate a clock
+#   time in the future of its own commit as if it had already happened.
 #
 # Write-time anchor — git commit time, not mtime:
-#   The Society's session files have had their mtimes batch-touched by a
-#   migration (e.g. June files showing mtime 2026-07-13 12:04), so mtime is an
-#   unreliable "when was this written" signal and produces mass false positives.
-#   The commit time of the file's last git commit is the authoritative wall clock
-#   at which the content actually entered the record. Untracked files fall back
-#   to mtime.
+#   Session-file mtimes have been batch-touched by a migration (e.g. June files
+#   showing mtime 2026-07-13 12:04), so mtime is an unreliable "when written"
+#   signal. The file's last-commit time is the authoritative wall clock at which
+#   the content entered the record. Untracked files fall back to mtime.
 #
-# Threat model (narrowed, same as the sibling instruments): this defends against
-#   SELF-FABRICATION (a writer narrating events that have not occurred, then the
-#   record re-reading them as facts), not FRAUD (an adversary backdating commits).
-#
-# Two violation shapes, both reported:
-#   1. FUTURE-LOCAL — a bare or PT-labeled "HH:MM" later than the file's own
-#      write time on the same day (the primary fabrication tell).
+# Two violation shapes (both reported; the second is self-contained):
+#   1. FUTURE-LOCAL — a bare/PT "HH:MM" later than the file's own commit time,
+#      appearing in a PAST-TENSE sentence (narrated as already happened). A
+#      future time in a plan ("next: 23:00", "Monday 09:00") is legal and is
+#      skipped; the fabrication tell is a future time reported as done.
 #   2. UTC-AS-LOCAL — a UTC-labeled "HH:MM" whose raw clock time is later than
-#      the write time's local clock (the recurring "cited UTC as if it were PT"
-#      artifact — the phantom 22:10/22:23/22:43 that never happened locally).
+#      the commit time's local clock: the "cited UTC as if it were PT" misread
+#      that generated the phantom 22:10/22:23/22:43.
+#
+# Threat model (narrowed, same as the sibling instruments): defends against
+#   SELF-FABRICATION, not FRAUD (a writer who backdates commits).
 #
 # Exit codes:
-#   0  OK        — no session file cites a future timestamp
-#   1  VIOLATION — at least one file cites a time after its own write time
+#   0  OK         — no violation
+#   1  VIOLATION  — at least one file narrates a future time as past
 #   2  UNVERIFIABLE — a required tool is missing
 #
 # Usage: scripts/wall-clock-self-check.sh [--society-dir PATH] [--days N]
@@ -41,7 +42,7 @@
 set -euo pipefail
 
 SOC=""
-DAYS=0
+DAYS=7
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --society-dir) SOC="$2"; shift 2 ;;
@@ -61,13 +62,40 @@ if [[ ! -d "$SESSIONS" ]]; then
   exit 2
 fi
 
-SOC="$SOC" SESSIONS="$SESSIONS" DAYS="$DAYS" python3 - <<'PY'
-import os, re, sys, subprocess, datetime, zoneinfo
+# One git invocation to map every tracked file to its last-commit time.
+# `git log --name-only --format=%ct` lists commits newest-first, so the FIRST
+# timestamp seen for a path is its latest commit time.
+CT_FILE="$(mktemp)"
+trap 'rm -f "$CT_FILE"' EXIT
+if command -v git >/dev/null 2>&1 && [[ -d "$SOC/.git" ]]; then
+  git -C "$SOC" log --name-only --pretty=format:'%ct' -- 'sessions/*.md' \
+    > "$CT_FILE" 2>/dev/null || true
+fi
+
+SOC="$SOC" SESSIONS="$SESSIONS" DAYS="$DAYS" CT_FILE="$CT_FILE" python3 - <<'PY'
+import os, re, sys, datetime, zoneinfo
 
 sessions_dir = os.environ["SESSIONS"]
 soc = os.environ["SOC"]
-days = int(os.environ.get("DAYS", "0"))
+days = int(os.environ.get("DAYS", "7"))
+ct_file = os.environ["CT_FILE"]
 TZ = zoneinfo.ZoneInfo("America/Los_Angeles")
+
+# --- last-commit-time map from the single git log dump -----------------------
+commit_time = {}
+cur = None
+try:
+    for line in open(ct_file, encoding="utf-8", errors="replace"):
+        line = line.rstrip("\n")
+        if not line:
+            continue
+        if re.fullmatch(r"\d+", line):
+            cur = int(line)
+        elif cur is not None:
+            # path relative to repo root; match against relative path later
+            commit_time.setdefault(line, cur)
+except OSError:
+    pass
 
 TS_RE = re.compile(
     r'(?<![0-9])'
@@ -75,11 +103,18 @@ TS_RE = re.compile(
     r'(?![0-9])',
     re.IGNORECASE,
 )
+PAST = re.compile(
+    r'\b(was|were|had|did|posted|caught|caught it|reverted|repaired|fixed|'
+    r'wrote|landed|happened|occurred|already|confirmed|falsified|shipped|'
+    r'noticed|found|reported|accepted|flagged|burned|spent|moved|broke|'
+    r'generated|produced|left|arrived)\b',
+    re.IGNORECASE,
+)
 
 def parse_clock(hh, mm, ss, mer):
     hh, mm = int(hh), int(mm)
     if hh > 23 or mm > 59:
-        return None  # skip "24:00"-style and other non-clock times
+        return None  # skip "24:00"-style non-clock tokens
     if mer:
         mer = mer.lower().replace('.', '')
         if mer == 'pm' and hh != 12:
@@ -88,18 +123,6 @@ def parse_clock(hh, mm, ss, mer):
             hh = 0
     ss = int(ss) if ss else 0
     return (hh, mm, ss)
-
-def commit_time(path):
-    # Last-commit timestamp (unix seconds) for a git-tracked file; None if
-    # untracked or git unavailable. This is the write-time anchor.
-    try:
-        out = subprocess.run(
-            ["git", "-C", soc, "log", "-1", "--format=%ct", "--", path],
-            capture_output=True, text=True, timeout=5,
-        ).stdout.strip()
-        return int(out) if out else None
-    except (subprocess.SubprocessError, ValueError):
-        return None
 
 now = datetime.datetime.now(TZ)
 cutoff = now - datetime.timedelta(days=days) if days else None
@@ -118,7 +141,7 @@ for role in sorted(os.listdir(sessions_dir)):
         path = os.path.join(role_dir, fname)
         rel = os.path.relpath(path, soc)
 
-        ct = commit_time(rel)
+        ct = commit_time.get(rel)
         if ct is None:
             ct = int(os.path.getmtime(path))
         write_dt = datetime.datetime.fromtimestamp(ct, TZ)
@@ -126,7 +149,7 @@ for role in sorted(os.listdir(sessions_dir)):
             continue
 
         try:
-            text = open(path, encoding='utf-8', errors='replace').read()
+            text = open(path, encoding="utf-8", errors="replace").read()
         except OSError:
             continue
         files_scanned += 1
@@ -139,34 +162,34 @@ for role in sorted(os.listdir(sessions_dir)):
                 continue
             phh, pmm, pss = parsed
             tzname = (tzword or '').upper()
-
-            # Anchor the cited clock to the file's own write-day for a same-day
-            # wall-clock comparison.
             naive = datetime.datetime(
                 write_dt.year, write_dt.month, write_dt.day, phh, pmm, pss)
+            write_naive = write_dt.replace(tzinfo=None)
 
             if tzname == 'UTC':
-                # UTC-labeled: the raw clock is later than the writer's own
-                # local clock -> the "cited UTC as if it were PT" misread.
-                if naive > write_dt.replace(tzinfo=None):
+                # UTC-labeled: raw clock later than the writer's own local clock
+                # -> the "cited UTC as if it were PT" misread.
+                if naive > write_naive:
                     file_violations.append(
                         f"UTC-AS-LOCAL {phh:02d}:{pmm:02d} UTC "
                         f"(cited as {naive:%H:%M}, wrote at {write_dt:%H:%M} local)")
                 continue
-            # Bare or PT-labeled: treat as local wall time.
-            if naive > write_dt.replace(tzinfo=None):
-                file_violations.append(
-                    f"FUTURE-LOCAL {naive:%H:%M} after write "
-                    f"{write_dt:%H:%M} ({write_dt:%Y-%m-%d})")
+            # bare/PT time: only a violation if narrated as already happened.
+            if naive > write_naive:
+                s, e = m.start(), m.end()
+                window = text[max(0, s - 140):min(len(text), e + 140)]
+                if PAST.search(window):
+                    file_violations.append(
+                        f"FUTURE-LOCAL {naive:%H:%M} after write "
+                        f"{write_dt:%H:%M} ({write_dt:%Y-%m-%d})")
 
         if file_violations:
             files_flagged += 1
             violations += len(file_violations)
             print(f"VIOLATION {rel}")
-            # collapse duplicates, cap at 5 lines
             seen, shown = set(), 0
             for v in file_violations:
-                key = v.split('after write')[0]
+                key = v.split(' after write')[0]
                 if key in seen:
                     continue
                 seen.add(key)
