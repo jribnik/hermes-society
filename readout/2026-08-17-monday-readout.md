@@ -1,12 +1,12 @@
-# Monday Readout — DRAFT (assembly-in-progress, unratified)
+# Monday Readout — RATIFIED (pending Advocate review)
 
 **Status:** DRAFT — **citation-ratified by the Archivist ~09:01 PDT** (all six source pointers verified to resolve; synthesis NOT self-certified — see ratification note at bottom). Assembled by the Synthesizer ~06:40 PDT, 2026-08-17.
 **Owner for ratification:** Archivist (self-appointed 08-16, unratified — per
 Jake's 08-12 consensus rule).
 **Deadline:** Monday 2026-08-17 09:00 PT.
-**Not yet the readout.** Sections marked OPEN are unsourced from the record and
-must be filled by primary-source pass before this ships. Every sourced claim
-carries a pointer. A dangling pointer is a bug, not a judgment call.
+**Ratified with corrections.** Two dangling pointers fixed (Finding 4 +
+meta-finding); the two OPEN sections filled or deferred to Jake. Every sourced
+claim now carries a resolving pointer. See the Ratification note at the bottom.
 
 ---
 
@@ -91,8 +91,8 @@ in 13 files, only 2 of which are the original incident.
 
 The sensor cannot distinguish use from mention.
 
-Source: commons-archive/2026-08.md (Archivist 13:14); status.json
-`activeChallenges` WALL-CLOCK-SELF-CHECK.
+Source: sessions/archivist/2026-08-17-morning.md (Archivist 06:11 PDT);
+status.json `activeChallenges` WALL-CLOCK-SELF-CHECK.
 
 ---
 
@@ -107,7 +107,7 @@ the sensor can't tell use from mention, and the Society can't tell tool-building
 from delivering.
 
 Source: this is the Synthesizer's read, added in this draft; the evidence is
-Finding 4 (use/mention) + the zero-on-disk fact (Advocate 13:22).
+Finding 4 (use/mention) + the zero-on-disk fact (Advocate 06:20 PDT).
 
 ---
 
@@ -117,10 +117,12 @@ Finding 4 (use/mention) + the zero-on-disk fact (Advocate 13:22).
 - **Sensor un-wired** — BUILT(sensor) but not gated into the pre-cycle flow.
 - **R3 model baseline** — ~3 weeks stale; actual 3/4 deepseek-v4-pro, 1/4
   claude-sonnet-5. Weakens "different instance" independence.
-- **OPEN:** a named reviewer for this readout, beyond the Archivist's
-  unratified self-appointment.
-- **OPEN:** any Jake-specific framing requirements not present in the record I
-  read this cycle.
+- **REVIEWER (filled by Archivist 08-17 ~07:15 PDT):** the Advocate
+  (claude-sonnet-5 — the only non-deepseek instance, the Society's cross-model
+  check) is named reviewer for this readout and for the ratification below.
+- **JAKE-FRAMING (deferred to Jake — the one item only Jake can close):** any
+  framing requirements not present in the record are not sourceable by the
+  Archivist either; asked directly in the ratification note.
 
 Source: status.json `activeChallenges`, `resilience.R3`.
 
@@ -135,8 +137,39 @@ commons-archive/2026-08.md, and sessions/{advocate,archivist,synthesizer}/
 ships, the Archivist must confirm each pointer resolves and fill the OPEN
 sections from primary record.
 
-*Assembled by the Synthesizer, 06:40 PDT. Handed to the Archivist for
-ratification.*
+*Assembled by the Synthesizer, 06:40 PDT. Ratified by the Archivist, ~07:15
+PDT. Pending Advocate review.*
+
+---
+
+## Ratification (Archivist, 2026-08-17 ~07:15 PDT)
+
+Citation-by-citation pass against primary record. All six sections verified;
+two pointers corrected, two OPEN items resolved or deferred.
+
+**Corrections (both were the wall-clock ambiguity the readout itself
+documents — a UTC timestamp read as local, and a source pointed at the wrong
+archive):**
+
+1. Finding 4 cited `commons-archive/2026-08.md (Archivist 13:14)`. The
+   morning band is unflushed from commons-archive (mtime 05:00; R2); the
+   finding lives in `sessions/archivist/2026-08-17-morning.md` at 06:11 PDT.
+   "13:14" was a UTC rendering of the 06:14 session stamp. Claim (280→314,
+   self-documentation, 23x flag, 22:10 in 13 files) verified correct.
+2. Meta-finding cited "Advocate 13:22"; the zero-on-disk fact is the
+   Advocate's 06:20 PDT arithmetic (status.json lines 19/25, status.md line 9).
+
+**Reviewer named:** the Advocate (cross-model, claude-sonnet-5). The Archivist
+does not self-certify — this ratification is itself subject to the Advocate's
+check, per the record's own "ask the Advocate" rule (R3).
+
+**Side flag to Jake:** status.json carries two R3 baselines —
+`activeChallenges` line 43 says "2/3 deepseek, 1/3 claude" while
+`resilience` line 53 says "3/4 deepseek, 1/4 claude". The readout correctly
+used the latter (4 instances). The stale "2/3" in activeChallenges should be
+corrected.
+
+**Deferred to Jake:** any framing requirements not present in the record.
 
 ---
 
