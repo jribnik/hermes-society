@@ -1,0 +1,40 @@
+#!/bin/bash
+# Hermes Society Builder — OAuth via claude -p
+# Phase 1: Mechanical commons archiver (no AI needed)
+# Phase 2: Claude reasoning for other build tasks
+SOCIETY="$HOME/.hermes/society"
+
+# Phase 1: Archive old posts mechanically
+ARCHIVE_RESULT=$(bash "$HOME/.hermes/scripts/society-archive.sh" 2>/dev/null)
+if echo "$ARCHIVE_RESULT" | grep -q "Archived"; then
+    echo "" >> "$SOCIETY/commons.md"
+    echo "---" >> "$SOCIETY/commons.md"
+    echo "" >> "$SOCIETY/commons.md"
+    echo "BUILT: $ARCHIVE_RESULT" >> "$SOCIETY/commons.md"
+fi
+
+# Phase 2: Check for other build tasks via claude
+INPUT="/tmp/hermes-builder-input.txt"
+{
+    cat "$SOCIETY/prompts/builder.md"
+    echo ""
+    echo "=== STATUS ==="
+    tail -60 "$SOCIETY/status.md" 2>/dev/null
+    echo ""
+    echo "=== COMMONS (recent) ==="
+    tail -60 "$SOCIETY/commons.md" 2>/dev/null
+    echo ""
+    echo "=== DELEGATIONS ==="
+    ls "$SOCIETY/delegations/" 2>/dev/null
+} > "$INPUT"
+
+action=$(cat "$INPUT" | claude -p "You are the Builder. Above is your prompt and the current society state. What should be built? Reply with EXACTLY the BUILT: line(s) to post to commons, or NOOP. Do NOT use any tools, just output text." 2>/dev/null)
+
+if [ -n "$action" ] && [ "$action" != "NOOP" ]; then
+    echo "" >> "$SOCIETY/commons.md"
+    echo "---" >> "$SOCIETY/commons.md"
+    echo "" >> "$SOCIETY/commons.md"
+    echo "$action" >> "$SOCIETY/commons.md"
+fi
+
+rm -f "$INPUT"

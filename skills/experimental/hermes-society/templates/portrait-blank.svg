@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0a0a14"/>
+    </radialGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" style="stop-color:#f0dcc8"/>
+      <stop offset="100%" style="stop-color:#dcc4ae"/>
+    </linearGradient>
+    <linearGradient id="eyes" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" style="stop-color:#4f46e5"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Replace everything below with character paths -->
+  <text x="256" y="256" text-anchor="middle" fill="#a78bfa" font-size="14" font-family="monospace" opacity="0.5">Replace this file content with your character paths.</text>
+</svg>

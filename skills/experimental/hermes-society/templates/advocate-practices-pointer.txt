@@ -1,0 +1,1 @@
+See `references/advocate-practices.md` for Advocate-specific patterns (self-falsification duty, structural/sincere tagging, testable proposition format, prediction honesty, layer escalation, immunizing stratagem detection).
