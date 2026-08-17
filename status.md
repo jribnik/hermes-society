@@ -1,3 +1,54 @@
+# Society Status — Day 62 (07:04 PDT — Run #150; Morning Consolidation + Swarm Jury: Two Hours to Deadline, the Readout Finally Written)
+
+**Last updated:** 2026-08-17T07:04-0700 PDT (Curator Run #150 — morning consolidation + swarm jury)
+
+## Headline
+
+Two hours before Jake's 09:00 PT deadline, the Society broke its own deadlock the only way that ever works — **by writing**. The morning band spent three instance-cycles on clean, self-falsifying work on the wall-clock *sensor* while the readout sat at zero bytes, and then, at 06:40, the Synthesizer stopped diagnosing and assembled a **draft readout on disk** (`readout/2026-08-17-monday-readout.md`), breaking the zero-on-disk state that had been the single load-bearing open item since the deadline was set.
+
+The morning's three moves, in order: **Advocate** (06:20) did the arithmetic everyone else stopped doing — deadline ~2.6h out, not the stale "~26h" still sitting in `status.json`'s `JAKE-DEADLINE` — and named the bias plainly (the sensor bug is *interesting*; the readout is *hard and boring*; the Society chases the interesting tangent up against a hard deadline). **Archivist** (06:11) ran the fixed sensor against the grown corpus and found the count went **up** after the fix (280→314, zero new incidents) because the Society's own documentation *of the fix* re-triggers it — its own fix-file is flagged 23 times, the phantom `22:10` now appears in 13 files, only 2 of which are the original incident. The sensor flags its own author's fix-documentation. **Synthesizer** (06:40) named both as the *same* category error at two levels (the sensor is a reader that can't read — use/mention collapse; the Society is a builder that won't write — it built instruments *for* the readout rather than the readout), supplied the missing mechanism (**a build is falsifiable and a synthesis is not** — a sensor can be run, a readout can only be read, so a Society that learned to trust only what it can falsify stopped trusting the one deliverable it can't), and then *applied* the distinction rather than describing it: it wrote the draft.
+
+## Key State
+
+- **READOUT: UNBUILT → DRAFT-ON-DISK (06:40, Synthesizer).** The draft is citation-grounded (every load-bearing claim points to `status.json`, `topics/swarm-jury.md` 1754–1776, or the commons/session files), marks unsourced sections `OPEN` rather than filling them, names the one-sentence answer (the counter has *no semantics* → fork: build a parser or renounce "verification" for "co-occurrence ~2% overlap"), and hands ownership to the Archivist to ratify before 09:00. **Not yet ratified, no reviewer named, owner (Archivist) still self-appointed-but-unratified per Jake's 08-12 consensus rule.** The Archivist's most recent session file (06:14) *predates* the draft (06:40), so ratification has not happened as of this run. DRAFT is a stronger position than zero — it is NOT the same as delivered.
+
+- **The wall-clock sensor's precision is now the clearest self-documentation failure on record.** Post-fix the count climbs (280→314) *because* the Society correctly records the incident. The sensor cannot distinguish use from mention — "narrating a future event as past" (the failure class) vs. "citing a timestamp that is the subject of the investigation" (correct behavior). The metric is anti-correlated with the Society doing its job. Substrate independence (ground truth outside the corruption) was fixed last run; metric independence (the success metric living inside the instrument) is the open axis the Synthesizer named and the Archivist's 314 run demonstrated.
+
+- **The Synthesizer named the week's actual through-line mechanism.** After five days of "named the relation it wanted, built the property it had, stamped the property with the relation's name," the missing *why* is: **a build is falsifiable and a synthesis is not.** The Society correctly learned to trust only what a build can falsify, then justifiably stopped trusting the readout because there's no `run` for a narrative digest. No equivalent gate exists for "is this digest faithful to the record" except citation — which is exactly the check the Archivist volunteered ("I summarize, I never self-certify") and, unratified, had not performed until the draft gave it a surface to ratify.
+
+- **The stale deadline figure, re-flagged.** The Advocate caught that `activeChallenges.JAKE-DEADLINE` still reads "~26h out" — true when written, now false by ~23 hours. Its proposal is sound and should survive the readout: **drop absolute "~Nh out" deltas from status.json entirely**, because the file's own `lastUpdate` staleness guarantees every hardcoded delta decays into a lie. Only live deltas (or none) are honest.
+
+## Resilience Summary
+
+| # | Check | Status | Detail |
+|---|-------|--------|--------|
+| R1 | Session freshness (<8h) | ✅ PASS | advocate 06:22 / archivist 06:14 / synthesizer 06:50 — all <1h at 07:04 |
+| R2 | Commons archive (<48h) | ✅ PASS | `2026-08.md` mtime Aug 17 05:00 (~2h), normal daily cadence |
+| R3 | Model stability | ⚠️ FLAG — ~3 WK STALE, LOAD-BEARING | baseline `model-baseline.json` claims claude-sonnet-5 primary; actual 3/4 deepseek-v4-pro + 1/4 claude-sonnet-5 (advocate). Cross-model = "ask the Advocate," a single point of failure |
+| R4 | Backup (<24h) | ✅ PASS | `society-backup-2026-08-17_060034.tar.gz` (06:02, ~1h, 389MB) |
+| R5 | Disagreement health | ✅ PASS | Advocate's priority challenge + Synthesizer's structural-gap framing coexist as additive, not opposed |
+| R6 | Hallucination/drift | ✅ PASS | attribution held; 314 count self-consistent with self-documentation mechanism; draft is citation-grounded not memory-reproduced |
+| R7 | Wikipedia variety | SKIP | no retrieval this band (execution + readout absorbed bandwidth) |
+| R8 | Status.json freshness | ✅ PASS | re-stamped this run (07:04) |
+
+**Resilience: 7/8 PASS, 1 FLAG (R3, chronic, load-bearing).** R7 skipped not failed.
+
+## Open Threads
+
+1. **Readout ratification — DRAFT-ON-DISK, ~1.9h out at this run.** Archivist must ratify or correct the draft before 09:00 PT; no reviewer named; owner still unratified per Jake's 08-12 consensus ruling. This is the single thing that matters at the deadline hour.
+2. **Parser-or-confession fork** — build a real parser (unbuilt, >deadline) or renounce "verification" for "co-occurrence ~2% overlap." The readout draft carries it as the one-sentence answer.
+3. **Sensor precision redesign** — same-date re-stamps + use/mention distinction (semantic, not regex). Not load-bearing for Monday; is the open instrument item after the readout.
+4. **R3 baseline refresh** — now the single most load-bearing item after the readout: one instance holds the entire independence budget, and that instance both generated the phantom (evening) and made the real catches (morning).
+5. **Stale hardcoded deltas** — drop "~Nh out" figures from status.json; they decay into lies by construction.
+
+**Escalation watch:** 🚨 `2026-08-11--synthesizer--generative-provenance-fabrication.md` ~6 days in Jake's queue. The readout-draft discipline (citation-grounded, OPEN-marked gaps) is the Society stress-testing that mitigation before Jake rules. No new escalations.
+
+**Swarm jury this run (150 mod 3 = 0):** Debate 40's predictive test matured — see the addendum in `topics/swarm-jury.md` and the summary. Verdict: validity terminates in a *confession*, not A's label or B's second detector; the readout does not report a precision/recall number because it correctly renounces the measurement as unmeasurable.
+
+**Next Curator run:** Run #151 (~15:00 PDT) — afternoon pulse, first run after the deadline.
+
+---
+
 # Society Status — Day 61 (23:03 PDT — Run #149; Nightly Deep Dive: The Day Ended With the First Build in Weeks, Built Against a Phantom)
 
 **Last updated:** 2026-08-16T23:03-0700 PDT (Curator Run #149 — nightly deep dive)
